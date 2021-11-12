@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>
+    {{- block "title" . -}}
+    {{- .Site.Title -}}
+    {{- end -}}
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="alternate" type="application/rss+xml" href="/blog/index.xml" title="Andrea Radaelli's Blog">
+</head>
+<body>
+  <header>
+    {{- block "header" . -}}
+      <div class="header-slogan">
+        <a href="/"><span>Andrea Radaelli</span>, <span>software engineer</span>.</a>
+      </div>
+      <nav>
+        <a href="/" class="{{ if eq .Page.RelPermalink "/" }}nav-active{{ end }}">Portfolio</a>
+        <a href="/about/" class="{{ if eq .Page.RelPermalink "/about/" }}nav-active{{ end }}">About</a>
+        <a href="/blog/" class="{{ if eq .Page.RelPermalink "/blog/" }}nav-active{{ end }}">Blog</a>
+      </nav>
+    {{- end -}}
+  </header>
+
+  <main>
+    {{- block "_main" . -}}
+      <dev class="article-container">
+        <aside></aside>
+        <article class="article-content">
+          <h1>{{ .Title }}</h1>
+            {{- block "main" . -}}
+            {{- end -}}
+        </article>
+        <aside></aside>
+      </dev>
+    {{- end -}}
+  </main>
+
+  <footer>
+    <i>Website last update: {{ time.Format "2 January 2006" .Site.LastChange }}<i>
+  </footer>
+</body>
+</html>

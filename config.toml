@@ -1,0 +1,10 @@
+baseURL = 'https://aradaelli.com/'
+languageCode = 'en-us'
+title = 'Andrea Radaelli'
+enableRobotsTXT = true
+
+markup.highlight.noClasses = false
+
+[outputs]
+  home = ['HTML']
+  section = ['HTML', 'RSS']
