@@ -31,7 +31,7 @@ Check out my CV, and let's talk. I'm based in London, United Kingdom.
 **Contacts**
 
 
-hello@aradaelli.com
+contact@aradaelli.com
 
 **Connect**
 
