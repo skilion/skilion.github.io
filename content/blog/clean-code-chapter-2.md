@@ -1,7 +1,7 @@
 ---
 title: "Clean Code, Chapter 2: Meaningful Names"
-date: 2021-11-12T19:21:02Z
-draft: false
+date: 2021-11-12
+lastmod: 2021-11-18
 ---
 
 This post is a summary of chapter 2 of the book "Clean Code". Entitled "Meaningful Names", Chapter 2 introduces a series of principles to be used when naming variables, functions, arguments, classes, and packages.
@@ -17,6 +17,8 @@ Before diving in the rules, please note that the naming convention does not matt
 The name of a declaration should make the reader understand exactly what it contains. As a rule of the thumb, if a declaration requires a comment, then the name does not reveal its intent.
 
 Avoid one letter names. Disregard the fact that they are widely used in examples and snippets, in that context they are mainly used to save space. When you are writing code professionally you are writing code that will be read and re-read by many people after you. Space is not a concern, brain cycles are.
+
+Don't be afraid to make a name long. Long descriptive is better than short enigmatic.
 
 Examples:
 
