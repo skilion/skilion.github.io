@@ -32,7 +32,7 @@ Check out my CV, and let's talk. I'm based in London, United Kingdom.
 
 +44 77 4700 0287
 
-hello@aradaelli.com
+contact@aradaelli.com
 
 **Connect**
 
