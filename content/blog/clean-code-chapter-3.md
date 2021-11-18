@@ -7,13 +7,13 @@ This post is a summary of chapter 2 of the book "Clean Code". Entitled "Function
 
 ## 1. Single-responsability Principle (SRP)
 
-This recommendation is key, your function should do one thing and that thing should clearly stated in its name. At a glance, anybody can understand what it does withot looking at the code.
+Your function should do one thing and that thing should clearly be stated in its name. At a glance, anybody can understand what it does without looking at the code.
 
-What does this principle means in practice? It means that your function should only perfrom a handful of operations that are one level of abstraction below its name. If the function tries to do more than that, then you should be able to extract more functions by refactoring it.
+What does this principle mean in practice? It means that your function should only perform a handful of operations that are one level of abstraction below its name. If the function tries to do more than that, then you should be able to extract more functions by refactoring it.
 
 There are two signals that tells if a function is doing more than one thing:
  - The number of lines of code is more than 20 or 30.
- - The are more than 2 or 3 `if`, `for`, and `while` statements (nested or not).
+ - There are more than 2 or 3 `if`, `for`, and `while` statements (nested or not).
 
 ```c#
 void synchronizeRemoteItems()
@@ -58,7 +58,7 @@ private void ensureItemIsSynced(Item item, Server remoteServerInstance)
 }
 ```
 
-Another relevant example is error handling. "Try/catch" blocks confuse the structure of the code and mix error processing with the busineess logic. So it is better to extract the bodies of the try and catch blocks out into functions of their own.
+Another relevant example is error handling. "Try/catch" blocks confuse the structure of the code and mix error processing with the business logic. So it is better to extract the bodies of the try and catch blocks out into functions of their own.
 
 ```c#
 void synchronizeRemoteItems()
@@ -139,7 +139,7 @@ If you must have side effects they should be clearly made explicit in the functi
 
 Function that use output arguments are confusing and should be avoided in general. It's not immediate to understand that an argument is an output and you certainly have to look the definition.
 
-Output arguments were widely used before object oriented (OO) programming, however in an OO language the need for output arguments disappears because when you are a calling a method, the object owning it is the intended ouput argument (`this`).
+Output arguments were widely used before object oriented (OO) programming, however in an OO language the need for output arguments disappears because when you are a calling a method, the object owning it is the intended output argument (`this`).
 
 ```c#
 void addCheese(Pizza pizza, Cheese cheese);
@@ -170,6 +170,6 @@ Returning error codes count as breaking this rule. It leads to creating deeply n
 
 ## 6. Don't Repeat Yourself (DRY)
 
-"Avoid code duplication" is something you have been told to death if you had a formal education in computer science, and for a good reason. If there is an algorithm that gets duplicated N times, the source code will require N-times to be modificated should the algorithm ever change.
+"Avoid code duplication" is something you have been told to death if you had a formal education in computer science, and for a good reason. If there is an algorithm that gets duplicated N times, the source code will require to be modified N-times should that algorithm ever change.
 
 Also the readability of your code base is improved if reduntant code is replaced with a single function.
