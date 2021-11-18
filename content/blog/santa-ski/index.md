@@ -1,7 +1,7 @@
 ---
 title: "Santa Ski"
 date: 2015-11-15
-draft: false
+lastmod: 2021-11-07
 resources:
 - name: header
   src: images/header.png

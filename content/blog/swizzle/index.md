@@ -1,7 +1,7 @@
 ---
 title: "Swizzle"
 date: 2013-01-01
-draft: false
+lastmod: 2021-11-04
 resources:
 - name: header
   src: images/header.png

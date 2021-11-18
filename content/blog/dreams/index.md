@@ -1,7 +1,7 @@
 ---
 title: "We Are Made of Dreams"
 date: 2014-10-12
-draft: false
+lastmod: 2021-11-06
 resources:
 - name: header
   src: images/header.png
