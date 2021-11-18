@@ -1,5 +1,5 @@
-{{ $videoName := index .Params 0 }}
-{{ $videoLink := (.Page.Resources.GetMatch $videoName).RelPermalink }}
+{{- $videoName := index .Params 0 -}}
+{{- $videoLink := (.Page.Resources.GetMatch $videoName).RelPermalink -}}
 <video controls>
     <source src="{{ $videoLink }}" type="video/mp4">
 </video>
