@@ -56,7 +56,6 @@ a:visited {
   color: var(--link-color);
 }
 
-
 @media (prefers-color-scheme: dark) {
   a:hover {
     color: #b3b3ff;
@@ -236,4 +235,8 @@ header {
   .article-container aside {
     display: none;
   }
+}
+
+pre {
+  tab-size:4;
 }
