@@ -3,6 +3,6 @@
 {{ end }}
 
 {{ define "main" }}
-  <p><i>{{ time.Format "2 January 2006" .Page.Date }} {{ if gt .Page.Lastmod .Page.Date }}(Last update: {{ time.Format "2 January 2006" .Page.Lastmod }}){{ end }}</i></p>
+  <p class="page-date">{{ time.Format "2 January 2006" .Page.Date }} {{ if gt .Page.Lastmod .Page.Date }}(Last update: {{ time.Format "2 January 2006" .Page.Lastmod }}){{ end }}</p>
   {{ .Content }}
 {{ end }}
