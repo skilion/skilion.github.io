@@ -5,7 +5,7 @@ date: 2021-11-18T09:50:39Z
 
 This post is a summary of chapter 2 of the book "Clean Code". Entitled "Functions", Chapter 3 introduces a series of principles to be used when writing functions. Functions deserve a full chapter about them because they are the first level of abstraction in any program.
 
-## 1. Single-responsability Principle (SRP)
+## 1. Single-responsibility Principle (SRP)
 
 Your function should do one thing and that thing should clearly be stated in its name. At a glance, anybody can understand what it does without looking at the code.
 
