@@ -3,7 +3,9 @@ languageCode = 'en-us'
 title = 'Andrea Radaelli'
 enableRobotsTXT = true
 markup.highlight.noClasses = false
-minify.tdewolff.xml.keepWhitespace = true
+
+[minify]
+  disableXML = true
 
 [outputs]
   home = ['HTML']
