@@ -109,4 +109,4 @@ public class Pizza
 
 ## Team Rules
 
-When working on an existing codebase do learn and follow the conventions that have been set by your predecessors and team mates. Everybody should agree on one convention and stick to it. Consistency is more important than following best practices. As a programmer I expect that the formatting I see in one file to be be the same in others. Multiple styles would just add unnecessary complexity.
+Most of the time in your career you will be working with other people on an existing codebase. When working in a team, learn and follow the conventions that have been set by team mates. Everybody should agree on one convention and stick to it because consistency is more important than following best practices (which can sometime be arbitrary). As a programmer I expect the formatting I see in one file to be be the same in others. Having multiple styles adds unnecessary complexity.
