@@ -1,16 +1,20 @@
 {{- $safeUrl := .Destination | safeURL -}}
 {{- $image := .Page.Resources.GetMatch .Destination -}}
-{{- $imageSmall := $image.Resize "600x q70" -}}
-{{- $imageMedium := $image.Resize "1200x q70" -}}
-{{- $imageBig := $image.Resize "1800x q70" -}}
 {{- $caption := .Text | markdownify -}}
 <figure>
   <a href="{{ $image.RelPermalink }}">
     <picture>
-      <source media="(min-width:600px)" srcset="{{ $imageSmall.RelPermalink }}">
-      <source media="(min-width:1200px)" srcset="{{ $imageMedium.RelPermalink }}">
-      <source media="(min-width:1800px)" srcset="{{ $imageBig.RelPermalink }}">
-      <img class="md__image" src="{{ $imageSmall.RelPermalink }}" alt="{{ $caption }}"/>
+      {{ if strings.HasSuffix $safeUrl ".svg" }}
+      <img class="md__image" src="{{ $image.RelPermalink }}" alt="{{ $caption }}"/>
+      {{ else }}
+        {{- $imageSmall := $image.Resize "600x q70" -}}
+        {{- $imageMedium := $image.Resize "1200x q70" -}}
+        {{- $imageBig := $image.Resize "1800x q70" -}}
+        <source media="(min-width:600px)" srcset="{{ $imageSmall.RelPermalink }}">
+        <source media="(min-width:1200px)" srcset="{{ $imageMedium.RelPermalink }}">
+        <source media="(min-width:1800px)" srcset="{{ $imageBig.RelPermalink }}">
+        <img class="md__image" src="{{ $imageSmall.RelPermalink }}" alt="{{ $caption }}"/>
+      {{ end }}
     </picture>
   </a>
   <figcaption>
