@@ -23,7 +23,7 @@ Developing trading strategies needs at minimum:
 1. A strategy (duh!)
 2. Market data to backtest the strategy
 
-I decided to focus on market data first, and I quickly realized that is no real good free source of it, unless you want to pay $$$. Then I found out about [Alpha Vantage](https://www.alphavantage.co/) which is a market data provider with a generous free tier which gives unlimited access to global market data, but it comes with a strong rate limit on the speed at which you can read it.
+I decided to focus on market data first, and I quickly realized that there is no real good free source of it, unless you want to pay $$$. Then I found out about [Alpha Vantage](https://www.alphavantage.co/) which is a market data provider with a generous free tier which gives unlimited access to global market data, but it comes with a strong rate limit on the speed at which you can read it.
 
 So I went to work and developed a few Python scripts that would slowly crawl  Alpha Vantage each day and collect price and company information in a database from which I could easily run query or make simulations via [Jupiter Notebooks](https://jupyter.org/).
 
