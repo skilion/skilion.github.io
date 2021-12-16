@@ -124,6 +124,7 @@ header {
 .header-slogan a:hover {
   border-color: var(--text-color);
   text-decoration: none;
+  text-shadow: none
 }
 .header-slogan a:visited {
   color: var(--text-color);
