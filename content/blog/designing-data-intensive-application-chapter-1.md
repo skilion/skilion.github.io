@@ -3,7 +3,7 @@ title: "Designing Data Intensive Applications, Chapter 1"
 date: 2021-12-22
 ---
 
-This post is a summary of chapter 1 from the book Designing Data Intensive Applications. Chapter 1 introduces the fundamental terminology and metrics to evaluate data-intensive applications.
+This post is a summary of chapter 1 from the book "Designing Data Intensive Applications". Chapter 1 introduces the fundamental terminology and metrics to evaluate data-intensive applications.
 
 At the time of writing, "DDIA" is the number 1 best seller on Amazon in the category "Data Modeling & Design". In the book, the author, [Martin Kleppmann](https://martin.kleppmann.com/) covers the architecture of a broad range of databases and distributed data processing systems that are essential knowledge for engineers that want to to develop distributed, scalable modern applications that process huge amount of data.
 
@@ -19,7 +19,7 @@ Data-intensive applications are usually built from standard building blocks. The
 - Stream processing: for sending data to another process to be handles asynchronously.
 - Batch processing: for periodically processing a large amount of accumulated data.
 
-However each of this blocks can be implemented in many different ways and most of the time a solution can fall in more than one category. Therefore we need a more granular way to categorize data systems and we can use the non-functional requirements that we want from the system that ultimately we want to design:
+However each of this blocks can be implemented in many different ways and most of the time an implementation can fall in more than one category. Therefore we need a more granular way to categorize data systems and we can use the non-functional requirements that we want from the system that ultimately we want to design:
 
 - Reliability
 - Scalability
