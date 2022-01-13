@@ -233,7 +233,6 @@ header {
 }
 .article-content {
   width: 40rem;
-  margin: auto;
 }
 
 @media only screen and (max-width: 45rem) {
@@ -242,6 +241,9 @@ header {
   }
   .article-container aside {
     display: none;
+  }
+  .article-content {
+    width: 100%;
   }
 }
 
