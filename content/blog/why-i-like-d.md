@@ -221,3 +221,7 @@ To be honest here, the package ecosystem is not nearly as developed as Python or
 Hopefully this post has gave you a bit of curiosity to learn about D yourself. If that's the case I suggest you to spend 30 minutes on this [interactive tutorial](https://tour.dlang.org/) which will teach you the 80% of the language feature and practice them from your browser.
 
 "Ok, that's nice...", you may say, "...but what about real work, can I get paid to learn and write in D?". Well sort of. There are a very few places in the world that hire people to write in D, but they are niches which you will love and they will love you back if you have the hacker mentality which has pushed you to learn this elegant programming language. You can find them on Google ;)
+
+---
+
+[Comments](https://news.ycombinator.com/item?id=29863557)
