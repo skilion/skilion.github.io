@@ -1,6 +1,7 @@
 ---
 title: "Why I Like D"
 date: 2022-01-09
+lastmod: 2022-01-13
 ---
 
 My engineer friends are surprised when I mention I know and I even wrote code in the [D programming language](https://en.wikipedia.org/wiki/D_(programming_language)) (aka Dlang).
@@ -104,8 +105,8 @@ For example here is function that can only be used when the types satisfy the gi
 
 ```d
 T[] find(T, E)(T[] haystack, E needle)
-// Check that T and E are can be compared for inequality
-	if (is(typeof(haystack[0] != needle) == bool)) 
+// Check that T and E can be compared for inequality
+if (is(typeof(haystack[0] != needle) == bool)) 
 {
 	// Actual code of find()
 }
@@ -212,7 +213,7 @@ However nowadays there are:
 
 ## Package Manager
 
-In line with the modern programming languages such as Python, Node Js and C#, D has it's own official package manger, called [DUB](https://code.dlang.org/).
+In line with modern programming languages such as Python, Node Js and C#, D has it's own official package manger, called [DUB](https://code.dlang.org/).
 
 To be honest here, the package ecosystem is not nearly as developed as Python or Node Js. But this is to be expected given the lower adoption that D has. Nevertheless you have the most common use cases covered such as web development, protocols such as gRPC or REST, parsers, interfaces with commonly used libraries like SDL, OpenGL, Linux and Windows system libraries.
 
