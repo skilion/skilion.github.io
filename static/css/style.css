@@ -131,11 +131,8 @@ header {
 }
 
 @media (prefers-color-scheme: dark) {
-  .header-slogan a span:nth-of-type(even) {
+  .header-slogan a:nth-of-type(even) {
     animation: blink 18s linear infinite;
-  }
-  .header-slogan a span:nth-of-type(odd) {
-    animation: blink 27s linear infinite;
   }
   @keyframes blink {
     0% {
@@ -266,4 +263,10 @@ h3 {
 
 .page-date {
   color: #AAA;
+}
+
+table, th, td {
+  border: 1px solid var(--text-color);
+  border-collapse: collapse;
+  padding: .25em;
 }
