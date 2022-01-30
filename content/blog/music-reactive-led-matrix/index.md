@@ -95,7 +95,7 @@ For my use case I would need to transmit the color for 600 pixel at least 30 tim
 
 `432KBit` are about 10% lower than `478KBit`, so, when planning, thought I would not have any problem.
 
-However in practice it is not that straightforward. The Bluetooth API are not really made for maximum throughput out of the box and optimizing both an Android app and the ESP32 requires reading lots of documentation and lots of trial and error. In the end, I did not have enough time to properly do it.
+However, reality is not that straightforward. The Bluetooth API are not really made for maximum throughput out of the box and optimizing both an Android app and the ESP32 requires reading lots of documentation and lots of trial and error. In the end, I did not have enough time to properly do it.
 
 My initial tests showed miserable performance in the range of 1 to 5 frame per second, with noticeable change in speed from time to time. That was unacceptable to show animations that react in real-time with the music.
 
@@ -137,3 +137,7 @@ Here is a video that shows the internal cabling of the LED matrix. Before hangin
 When I turned the LED matrix on at New Year my friends were ecstatic. It made all the hours spent soldering and testing worth it.
 
 I have learned a lot from this project. It is something I had never attempted at this scale and I am now working on improving it to match my original plan. Stay tuned.
+
+---
+
+[Comments](https://news.ycombinator.com/item?id=30140641)
