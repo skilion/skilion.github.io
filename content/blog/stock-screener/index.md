@@ -4,8 +4,6 @@ date: 2021-12-15
 resources:
 - name: header
   src: images/header.png
-tags:
-  - portfolio
 ---
 
 In the last couple of years I have been actively investing my savings in the Stock Market. I have learned a lot on how finance works but long story short, I am not interested in investing in the stock market anymore since I came to realize that:

@@ -5,8 +5,6 @@ lastmod: 2021-11-04
 resources:
 - name: header
   src: images/header.png
-tags:
-  - portfolio
 ---
 
 In 2013, all my friends were playing [Ruzzle](https://en.wikipedia.org/wiki/Ruzzle) on their smartphones. However I only had a [dumbphone](https://en.wiktionary.org/wiki/dumbphone) so I could not join in the fun.
