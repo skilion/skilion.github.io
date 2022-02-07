@@ -159,6 +159,7 @@ header {
 pre {
   tab-size: 4;
   overflow-x: auto;
+  white-space: pre-wrap;
 }
 
 h1 {
