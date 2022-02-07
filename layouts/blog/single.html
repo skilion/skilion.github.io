@@ -2,7 +2,7 @@
   {{ .Title }} &ndash; {{ .Site.Title }}
 {{ end }}
 
-{{ define "main" }}
+{{ define "content" }}
   <p class="page-date">{{ time.Format "2 January 2006" .Page.Date }} {{ if gt .Page.Lastmod .Page.Date }}(Last update: {{ time.Format "2 January 2006" .Page.Lastmod }}){{ end }}</p>
   {{ .Content }}
 {{ end }}

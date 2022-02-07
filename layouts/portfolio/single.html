@@ -1,0 +1,22 @@
+{{ define "head" }}
+  <link rel="stylesheet" href="/css/portfolio.css">
+{{ end }}
+
+{{ define "main" }}
+  <div class="projects-container">
+  {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
+    {{ if eq $key "portfolio" }}
+      {{ range $taxonomy.Pages }}
+        {{- $headerImage := (.Resources.GetMatch "header").RelPermalink -}}
+        <a href="{{.RelPermalink}}" class="projects-item">
+          <div class="project-details">
+            <div>{{ .Title }}</div>
+          </div>
+          <div class="project-img" style="background-image: url('{{ $headerImage }}')">
+          </div>
+        </a>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  </div>
+{{ end }}

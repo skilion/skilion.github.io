@@ -2,7 +2,7 @@
   {{ .Title }} &ndash; {{ .Site.Title }}
 {{ end }}
 
-{{ define "main" }}
+{{ define "content" }}
   {{ .Content }}
   <ul>
   {{ range .Pages.GroupByDate "2006" }}
