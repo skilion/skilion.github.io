@@ -38,7 +38,7 @@ The LED strips come with adhesive tape so I decided to stick them on a [frosted 
 
 On the software side, I could build upon the code of my [previous project](/blog/bluetooth-rgb-light) and extend it to transmit an RGB matrix from my phone to the ESP32 which would in turn transmit it to the LED strip. In the app I could make some nice animations that would use the sound from the microphone as input.
 
-With all this in mind, I orders the material, waited for delivery, and started building.
+With all this in mind, I ordered the material, waited for delivery, and started building.
 
 ![Assembling the LED Matrix](images/1.jpg)
 
@@ -46,9 +46,9 @@ With all this in mind, I orders the material, waited for delivery, and started b
 
 My biggest mistake was over estimating the power capacity of the buck converters.
 
-I have experience with the super compact ["Mini 360" buck converter](https://duckduckgo.com/?q=mini+360+buck+converter) and I remembered from their spec that they could output up to `3A`.
+I had experience with the super compact ["Mini 360" buck converter](https://duckduckgo.com/?q=mini+360+buck+converter) and I remembered from its spec that it could output up to `3A`.
 
-I had read somewhere that a single WS2812B LED consumes a maximum of `0.06A`, so two strips of `1m` should consume a maximum of `2 * 30 * 0.06A = 3.6A`. I thought `0.06A` was probably an extreme case and that the real limit would be lower so I decided to connect each Mini 360 to 2 strips.
+I had read somewhere that a single WS2812B LED could consume a maximum of `0.06A`, so two strips of `1m` should consume a maximum of `2 * 30 * 0.06A = 3.6A`. I thought `0.06A` was probably an extreme case and that the real limit would be lower so I decided to connect each Mini 360 to 2 strips.
 
 However, I overlooked the fact that `3A` was the **peak** output of the Mini 360, only sustainable for a short period of time. In my practical tests the Mini 360 becomes **dangerously hot** over `1.5A` and I realized that only when testing the LED matrix after all the soldering and cabling was done.
 
@@ -93,15 +93,15 @@ For my use case I would need to transmit the color for 600 pixel at least 30 tim
 54KB * 8 = 432KBit
 ```
 
-`432KBit` are about 10% lower than `478KBit`, so, when planning, thought I would not have any problem.
+`432KBit` are about 10% lower than `478KBit`, so, when planning, I thought I would not have any problem.
 
 However, reality is not that straightforward. The Bluetooth API are not really made for maximum throughput out of the box and optimizing both an Android app and the ESP32 requires reading lots of documentation and lots of trial and error. In the end, I did not have enough time to properly do it.
 
-My initial tests showed miserable performance in the range of 1 to 5 frame per second, with noticeable change in speed from time to time. That was unacceptable to show animations that react in real-time with the music.
+My initial tests showed miserable performances, in the range of 1 to 5 frame per second, with noticeable change in speed from time to time. That was unacceptable to show animations that react in real-time with the music.
 
 Animations that slow are very hard to watch so I decided to create the animations directly on the ESP32 instead of my phone. That is not ideal because it is much faster to develop and release for a smartphone than a microcontroller.
 
-With the time left I chose one animation, the histogram of the audio frequencies, and hardcoded it in the ESP32. My phone would then only calculate the height of the histogram bars and send it. Since the histogram itself is very little I could get away with my limited bandwidth.
+With the short time left I chose one animation, the histogram of the audio frequencies, and hardcoded it in the ESP32. My phone would then only calculate the height of the histogram bars and send it. Since the histogram itself is very little (`20B`, 1 byte for each column) I could get away with my limited bandwidth.
 
 I had to make the histogram on the phone because it was the only device with a microphone. The ESP32 by itself cannot listen to sounds.
 
