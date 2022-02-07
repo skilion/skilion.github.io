@@ -12,37 +12,37 @@
   <link rel="stylesheet" href="/css/syntax.css">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="alternate" type="application/rss+xml" href="/blog/index.xml" title="Andrea Radaelli's Blog">
+  {{- block "head" . -}}
+  {{- end -}}
 </head>
 <body>
   <header>
     {{- block "header" . -}}
-      <div class="header-slogan">
-        <a href="/">Andrea Radaelli</a>
-      </div>
+      <a href="/">
+        <img class="header-logo" src="/images/logo.svg">
+      </a>
       <nav>
-        <a href="/" class="{{ if eq .Page.RelPermalink "/" }}nav-active{{ end }}">Portfolio</a>
-        <a href="/about/" class="{{ if eq .Page.RelPermalink "/about/" }}nav-active{{ end }}">About</a>
+        <a href="/portfolio/" class="{{ if eq .Page.RelPermalink "/portfolio/" }}nav-active{{ end }}">Portfolio</a>
         <a href="/blog/" class="{{ if eq .Page.RelPermalink "/blog/" }}nav-active{{ end }}">Blog</a>
+        <a href="/about/" class="{{ if eq .Page.RelPermalink "/about/" }}nav-active{{ end }}">About</a>
       </nav>
     {{- end -}}
   </header>
 
   <main>
-    {{- block "_main" . -}}
-      <dev class="article-container">
-        <aside></aside>
-        <article class="article-content">
+    {{- block "main" . -}}
+      <article class="article-container">
+        <section class="article-content">
           <h1>{{ .Title }}</h1>
-            {{- block "main" . -}}
+            {{- block "content" . -}}
             {{- end -}}
-        </article>
-        <aside></aside>
-      </dev>
+        </section>
+      </article>
     {{- end -}}
   </main>
 
   <footer>
-    <p><a href="https://github.com/skilion">GitHub</a> - <a href="https://www.linkedin.com/in/andrea-radaelli/">LinkedIn</a> - <a href="mailto:contact@aradaelli.com">Email</a></p>
+    <p><a href="mailto:contact@aradaelli.com">Email</a> - <a href="https://www.linkedin.com/in/andrea-radaelli/">LinkedIn</a> - <a href="https://github.com/skilion">GitHub</a></p>
   </footer>
 </body>
 </html>

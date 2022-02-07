@@ -1,18 +1,59 @@
-{{ define "_main" }}
-  <div class="projects-container">
-  {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
-    {{ if eq $key "portfolio" }}
-      {{ range $taxonomy.Pages }}
-        {{- $headerImage := (.Resources.GetMatch "header").RelPermalink -}}
-        <a href="{{.RelPermalink}}" class="projects-item">
-          <div class="project-details">
-            <div>{{ .Title }}</div>
-          </div>
-          <div class="project-img" style="background-image: url('{{ $headerImage }}')">
-          </div>
-        </a>
-      {{ end }}
-  {{ end }}
-  {{ end }}
-  </div>
+{{ define "head" }}
+  <link rel="stylesheet" href="/css/home.css">
+{{ end }}
+
+{{ define "main" }}
+  <article class="brand-container">
+    <div class="brand">
+      <img class="brand-photo" src="/images/photo.jpg">
+      <div class="brand-name">Andrea Radaelli</div>
+      <div>Freelance Software Engineer</div>
+    </div>
+  </article>
+
+  <article class="services">
+    <section div class="services-card">
+      <div class="services-title">
+        Bring Ideas To Life
+      </div>
+      <ul>
+        <li>Web & E-commerce</li>
+        <li>App Development</li>
+        <li>Embedded Software</li>
+      </ul>
+    </section>
+    <section class="services-card">
+      <div class="services-title">
+        Find Solutions
+      </div>
+      <ul>
+        <li>Automation</li>
+        <li>Cloud Infrastructure</li>
+        <li>Data Visualizations</li>
+      </ul>
+    </section>
+    <section class="services-card">
+      <div class="services-title">
+        Optimizations
+      </div>
+    <ul>
+      <li>A/B Testing</li>
+      <li>Costs Reduction</li>
+      <li>Speed</li>
+    </ul>
+    </section>
+  </article>
+
+  <article class="experience">
+    <div class="experience-title">
+      Experience
+    </div>
+    <section class="experience-logos">
+      <img class="experience-logo" src="/images/bloomberg.png">
+      <img class="experience-logo" src="/images/sportsanalytics.jpg">
+      <img class="experience-logo" src="/images/politecnico.png">
+      <img class="experience-logo" src="/images/inkmaker.png">
+    </section>
+  </article>
+
 {{ end }}
