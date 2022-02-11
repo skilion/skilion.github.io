@@ -1,6 +1,5 @@
 ---
 title: "About Me"
-date: 2021-11-01
 ---
 
 As a kid, I've always loved opening toys to see how they works.

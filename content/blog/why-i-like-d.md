@@ -1,20 +1,20 @@
 ---
 title: "Why I Like D"
 date: 2022-01-09
-lastmod: 2022-01-13
+lastmod: 2022-02-11
 ---
 
 My engineer friends are surprised when I mention I know and I even wrote code in the [D programming language](https://en.wikipedia.org/wiki/D_(programming_language)) (aka Dlang).
 
 D is not exactly a mainstream language. According to the [Tiobe Index](https://www.tiobe.com/tiobe-index/), which measures programming languages popularity, D doesn't make the first 20th languages, as of today. Its peak was in 2009 when it reached the [12th position](https://www.tiobe.com/tiobe-index/d/).
 
-I discovered D in 2016. I can't remember if it was from [Hacker News](https://hn.algolia.com/?q=dlang) or some random Google search. At the time I was looking for a new language to replace C/C++ because I had enough of the amount of obscure behaviors, crazy complicated template system, and long compilation times. When writing C++ I have limit myself to use a subset of the features of the language to avoid "shooting myself in the foot". I wanted to switch to a more productive language where I could focus on writing code.
+I discovered D in 2013. I can't remember if it was from [Hacker News](https://hn.algolia.com/?q=dlang) or some random Google search. At the time I was looking for a new language to replace C/C++ because I had enough of the amount of obscure behaviors, crazy complicated template system, and long compilation times. When writing C++ I have limit myself to use a subset of the features of the language to avoid "shooting myself in the foot". I wanted to switch to a more productive language where I could focus on writing code.
 
 My requirements for a new language were: compiled, strongly typed, easy to learn and use (think Python), and binary compatible with existing C libraries such as [OpenGL](https://en.wikipedia.org/wiki/OpenGL) and the various operating system libraries.
 
 My candidates at the time were [D](https://dlang.org/), [Go](https://go.dev/), and [Rust](https://www.rust-lang.org/). They are all compiled languages, however Go did not have generic types at the time so I excluded it immediately. Being already familiar in C, D won over Rust easily, because the syntax of Rust is quite far from C compared to D. My only pet peeve against D was that it came with a built-in garbage collector and I was against it for performance reasons, but the GC can be disabled programmatically so I concluded that it was worth taking D for a test drive.
 
-Around the same time I registered for [Microsoft Onedrive](https://www.microsoft.com/en-gb/microsoft-365/onedrive/online-cloud-storage) to make use of a promotion and, being a Linux user, found the landscape lacking of a good client to sync my files. The best option was a client written in Python which I didn't quite like so I decided to write [my own client](https://github.com/skilion/onedrive) and to use D to become familiar with the new language.
+Later in 2016, I registered for [Microsoft Onedrive](https://www.microsoft.com/en-gb/microsoft-365/onedrive/online-cloud-storage) to make use of a promotion and, being a Linux user, found the landscape lacking of a good client to sync my files. The best option was a client written in Python which I didn't quite like so I decided to write [my own client](https://github.com/skilion/onedrive) and to use D to become more familiar with the language.
 
 In hindsight, that was a great choice. The need to write a good program for myself made me focus in learning D. I picked up [one of the best books](https://erdani.com/tdpl/) about it, written by Andrei Alexandrescu, and dived in. The book was great and it made me completely fall in love with the language.
 
