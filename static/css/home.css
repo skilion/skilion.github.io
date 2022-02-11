@@ -26,22 +26,23 @@
 .experience {
 	align-items: center;
 	background-color: #FFF;
-	color: #000;
+	color: #333;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	height: 25rem;
+	height: 100vh;
+	min-height: 25rem;
 	padding: 5rem 1rem 5rem 1rem;
 	row-gap: 3rem;
 }
 
-.experience-title {
-	font-size: 2rem;
-	font-weight: bold;
-} 
-
 .experience-logo {
 	max-height: 2rem;
+}
+
+.experience-logo:hover {
+	transform: scale(1.1);
+	transition: all .25s linear;
 }
 
 .experience-logos {
@@ -62,6 +63,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	height: 100vh;
 	min-height: 25rem;
 	padding: 5rem 1rem 5rem 1rem;
 	text-align: center;
