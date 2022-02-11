@@ -17,7 +17,6 @@
 </head>
 <body>
   <header>
-    {{- block "header" . -}}
       <a href="/">
         <img class="header-logo" src="/images/logo.svg">
       </a>
@@ -26,7 +25,6 @@
         <a href="/blog/" class="{{ if eq .Page.RelPermalink "/blog/" }}nav-active{{ end }}">Blog</a>
         <a href="/about/" class="{{ if eq .Page.RelPermalink "/about/" }}nav-active{{ end }}">About</a>
       </nav>
-    {{- end -}}
   </header>
 
   <main>
