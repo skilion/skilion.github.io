@@ -1,13 +1,15 @@
 ---
 title: "We Are Made of Dreams"
 date: 2014-10-12
-lastmod: 2021-11-06
+lastmod: 2022-02-11
 resources:
 - name: header
   src: images/header.png
 tags:
   - portfolio
 ---
+
+## Intro
 
 For me, Minecraft could easily be the greatest game of all time. The main reasons being that it is a "meta-game", a game that allows you to build other games.
 
@@ -22,6 +24,8 @@ When I got a prototype working, I was puzzled on what to make out of it.
 I didn't want to embark in making a full video game, so I decided to build a self-contained experience, a [demo](https://en.wikipedia.org/wiki/Demoscene); or in simpler terms, an "interactive video".
 
 {{< vimeo 223964278 25900eaca6 >}}
+
+## Analysis
 
 The code is written in [D](https://dlang.org/) as at the time I decided it would become my go to language after a long search for a modern alternative to C++.
 
@@ -42,5 +46,7 @@ The renderer is built using OpenGL3 and therefore it uses the modern rendering p
 Another thing I love is the built in map editor that allowed me to create the world that you can see in the demo.
 
 {{< video "videos/editor.mp4" >}}
+
+## Downloads
 
 The source code is available on [GitHub](https://github.com/skilion/dreams) and it can be readily compiled on Windows and Linux. Pre-compiled binaries are also available.

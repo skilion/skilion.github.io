@@ -13,7 +13,11 @@ This game is a remake of a Microsoft classic: [SkiFree](https://en.wikipedia.org
 
 {{< video "videos/gameplay.mp4" >}}
 
-I consider game jams great experiences for learning how to be pragmatical developers. Given the short time available one need to focus on implementing the features that matter and not the ones that could be solved by using a more complete media framework. Loading assets, audio and video access, are all problems that can be solved immediately by using a modern and mature framework and not something worth spending time on like I did for earlier game projects. You barely have the time to build the core features of whatever idea you come up with.
+I consider game jams great experiences for learning how to be pragmatical developers.
+
+Given the short time available one needs to focus on implementing features that matter. You do not have time to waste on writing code that solve problems that are already solved by a mature media framework. Loading assets, audio and video access, are all problems that can be solved immediately and not something worth spending time on like I did for earlier game projects.
+
+In 2 days, you barely have the time to build the core features of whatever idea you come up with.
 
 For this project I decided to use C++ with [SFML](https://en.wikipedia.org/wiki/Simple_and_Fast_Multimedia_Library) which provides access to graphics and input with very few lines of code.
 
