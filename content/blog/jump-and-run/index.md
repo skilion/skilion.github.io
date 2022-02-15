@@ -1,7 +1,7 @@
 ---
 title: "Jump And Run"
 date: 2011-09-02
-lastmod: 2022-02-11
+lastmod: 2022-02-12
 resources:
 - name: header
   src: images/header.png
@@ -9,17 +9,15 @@ tags:
   - portfolio
 ---
 
-## Introduction
+## Intro
 
-"Jump And Run" is a game I developed towards the end of High School and the first project I am really proud of.
+"Jump And Run" is a game I developed towards the end of high school and the first project I am really proud of.
 
-At the time I had some basic experience with graphics libraries such has SDL and OpenGL from reading books and articles online. I was always attracted by the idea of building my own game but I never tried it before.
+I was always attracted by the idea of building my own game but I had never tried it before. I had some basic experience with graphics from reading books and articles online but I only dabbled with some small graphical demos that I made during the long boring ours in our school lab.
 
-It all changed when I took an extra course at high school that introduced us into 3d graphics and game engines using [Irrlicht engine](https://irrlicht.sourceforge.io/). In the course we were encouraged to build a small game and I made simple game where the player moved a boat left and right avoiding boxes coming at it. 
+One day I decided to build proper game that would be fun to play with levels and enemies to kill.
 
-That experience showed me that I already had the skills I needed to build a game, what I lacked was a goal.
-
-I then decided to build a side scroller game based on my experience playing already existing games. The result suprised me, it turned out that I could turn my ideas into reality just by putting enough effort into it.
+The end result suprised me, it turned out that I could turn my ideas into reality just by putting enough effort into it.
 
 Here is a gameplay video of the first level:
 
@@ -41,17 +39,19 @@ Later, when the first computer arrived in my home, my first PC game arrived shor
 
 "Jump And Run" is my tribute to those games and the endless hours I spent on them. I drew the art myself using [Gimp](https://www.gimp.org/), downloaded the music from the [Free Music Archive](https://freemusicarchive.org) and sounds from [Freesound](https://freesound.org/).
 
-## Technology
+## Analysis
 
 Re-reading today the code today I see a lot of ["code smells"](https://en.wikipedia.org/wiki/Code_smell) like huge functions and bad names, however keep in mind that I just finished high school when I wrote it :).
 
-The game runs on a custom 2D Game Engine which I wrote in C++. To draw on the screen I used [OpenGL](https://en.wikipedia.org/wiki/OpenGL) and for playing sounds I used [OpenAL](https://en.wikipedia.org/wiki/OpenAL).
+The game runs on a custom 2D Game Engine which I wrote in C++.
 
-I appreciate how neatly the generic parts of the engine are split in virtual classes that make sense. The skeleton of the engine with its initialization code is separate from the game logic. I remember this structure being deeply influenced from the code of famous game engines of the time such as [Unreal Tournament](https://github.com/stephank/surreal/) and [Quake 3 Arena](https://github.com/id-Software/Quake-III-Arena).
+I appreciate how neatly the generic parts of the engine are split in virtual classes that make sense. The framework of the engine with its initialization code is separate from the game logic. I remember being deeply influenced from the code of famous game engines of the time such as [Unreal Tournament](https://github.com/stephank/surreal/) and [Quake 3 Arena](https://github.com/id-Software/Quake-III-Arena).
+
+To draw on the screen I used [OpenGL](https://en.wikipedia.org/wiki/OpenGL) and for playing sounds I used [OpenAL](https://en.wikipedia.org/wiki/OpenAL).
 
 I have forgotten how much time I spent rewriting much functionality of the standard library such as string and memory functions, file access, and various data structures. I was motivated by the fact that many game development articles recommended to avoid the standard library as it is not optimized for speed in most cases.
 
-## Map Editor
+### Map Editor
 
 I was very proud of the built-in map editor which allowed me to build maps with my basic drawing skills that would become alive with sound and enemies.
 
@@ -59,7 +59,7 @@ The game world is composed of small squares. Each square has a background and fo
 
 {{< video "videos/editor.mp4" >}}
 
-## Particle System
+### Particle System
 
 Another thing I remember fondly is the [particle system](https://en.wikipedia.org/wiki/Particle_system). It makes killing enemies very satisfying by releasing a swarm of "blood" particles which collide with the game world.
 
