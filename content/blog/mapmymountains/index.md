@@ -35,9 +35,9 @@ I kicked off the project with an iterative process of:
 2. Designing a data model to account for the use case.
 3. Simulating the usage of the data model and finding new questions for the stakeholders.
 
-The process required an interactive process with the people involved in the ongoing ML research project. [Here](https://1drv.ms/p/s!Ar26l2ZvsfJh-1EpLmzL8O9fvAsJ?e=tanGBv) is one of the presentations that was used to discuss the various use cases.
+The process required an interactive process with the people involved in the ongoing ML research project.
 
-I sketched the data model as [Entity-Relationship](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model) and iteratively improved until it satisfied all the requirements the system needed to support. You can see the final result [here](https://github.com/skilion/mapmymountains/tree/main/data-model).
+I sketched the data model as [Entity-Relationship](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model) and iteratively improved until it satisfied all the requirements the system needed to support. You can see the final result [here](https://gitlab.com/wds-co/mapmymountains/-/tree/main/data-model).
 
 We had informal meetings to decide which database to use. The alternatives were either a traditional relational database (PostgreSQL) or a NoSQL document database (MongoDB).
 
@@ -96,6 +96,8 @@ For hosting the Web App I have used: Amazon RDS for the database (I created a Po
 Overall the setups works quite nicely, it fits well within the limit of the Amazon Free Tier. It also has continuous deployment thanks to Github Actions. 
 
 You can find the live demo at: http://mapmymountains.aradaelli.com
+
+Source code: https://gitlab.com/wds-co/mapmymountains
 
 ## Credits
 
