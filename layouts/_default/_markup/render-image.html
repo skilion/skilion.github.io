@@ -1,6 +1,6 @@
 {{- $safeUrl := .Destination | safeURL -}}
 {{- $image := .Page.Resources.GetMatch .Destination -}}
-{{- $caption := .Text | markdownify -}}
+{{- $caption := .Text -}}
 <figure>
   <a href="{{ $image.RelPermalink }}">
     <picture>
