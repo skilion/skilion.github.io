@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-64J3C3W6RC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-64J3C3W6RC');
+  </script>
   <title>
     {{- block "title" . -}}
     {{- .Site.Title -}}
@@ -42,13 +49,5 @@
   <footer>
     <p><a href="mailto:contact@aradaelli.com">Email</a> - <a href="https://www.linkedin.com/in/andrea-radaelli/">LinkedIn</a> - <a href="https://github.com/skilion">GitHub</a></p>
   </footer>
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-64J3C3W6RC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-64J3C3W6RC');
-  </script>
 </body>
 </html>
