@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Portfolio - Andrea Radaelli</title>
+    <link>https://aradaelli.com/tags/portfolio/</link>
+    <lastBuildDate>Sun, 30 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://aradaelli.com/tags/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Music Reactive Led Matrix</title>
+      <link>https://aradaelli.com/blog/music-reactive-led-matrix/</link>
+      <pubDate>Sun, 30 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>https://aradaelli.com/blog/music-reactive-led-matrix/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;For New Year&amp;rsquo;s Eve 2021, I decided to build a LED matrix that would react to the music being played.&lt;/p&gt;
+&lt;p&gt;I got inspired for this project by visiting the Cyberdog store in Camden Town. I wanted to recreate the same feeling I had when seeing for the first time the awesome &lt;a href=&#34;https://duckduckgo.com/?q=cyberdog+dj+booth&amp;amp;iax=images&amp;amp;ia=images&#34;&gt;DJ booth&lt;/a&gt; they have in the basement.&lt;/p&gt;
+&lt;p&gt;I started planning and building it one month before. However the project was too ambitious for my experience with electronics, I made a few mistakes and I had to cut the features short to meet the deadline.&lt;/p&gt;
+&lt;p&gt;I am very proud of the final result, I managed to implement the main effect I saw in Cyberdog and make it work just in time for new year. It was far from perfect but enough to create the right atmosphere:&lt;/p&gt;
+&lt;video controls&gt;
+    &lt;source src=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/videos/final.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;/video&gt;
+&lt;h2 id=&#34;the-original-plan&#34;&gt;The Original Plan&lt;/h2&gt;
+&lt;p&gt;My initial requirements were:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;build a LED matrix by cutting up a few meters of LED strips&lt;/li&gt;
+&lt;li&gt;use an &lt;a href=&#34;https://en.wikipedia.org/wiki/ESP32&#34;&gt;ESP32 microcontroller&lt;/a&gt; to drive the strips&lt;/li&gt;
+&lt;li&gt;have an app on my smartphone to create the animations in sync with music&lt;/li&gt;
+&lt;li&gt;make the app and the ESP32 communicate via Bluetooth LE (partially reusing code from my &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light&#34;&gt;previous project&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;be as portable as possible&lt;/li&gt;
+&lt;li&gt;budget of £100&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The biggest cost would come from the LED strips so I checked EBay and decided to buy 20 meters of WS2812B Addressable RGB LED strips with a density of 30 LED/meter. With that I could create a &lt;code&gt;20x30&lt;/code&gt; matrix and if I spaced each strip by &lt;code&gt;10cm&lt;/code&gt; I could make it &lt;code&gt;2x1&lt;/code&gt; meters big. Big enough for a strong impact.&lt;/p&gt;
+&lt;p&gt;The WS2812B LED strips work with &lt;code&gt;5V&lt;/code&gt;. I estimated that 600 (&lt;code&gt;20x30&lt;/code&gt;) LEDS would need a big &lt;code&gt;200W 5V&lt;/code&gt; power supply and thick wires to sustain the amount of current needed (about &lt;code&gt;36A&lt;/code&gt; assuming each LED consumes &lt;code&gt;0.06A&lt;/code&gt; at maximum brightness). To avoid buying the power supply and the thick cables I decided to just use my bench power supply instead, with a higher voltage (&lt;code&gt;12V&lt;/code&gt;+), and then connect a few &lt;a href=&#34;https://en.wikipedia.org/wiki/Buck_converter&#34;&gt;buck converters&lt;/a&gt; right before the LED strips to bring the voltage down to 5V.&lt;/p&gt;
+&lt;p&gt;The LED strips come with adhesive tape so I decided to stick them on a &lt;a href=&#34;https://duckduckgo.com/?q=frosted+vinyl+film&amp;amp;iar=images&amp;amp;iax=images&amp;amp;ia=images&#34;&gt;frosted vinyl film&lt;/a&gt; in order to be able to roll everything up when not in use. The frosted finish of the vinyl film helps hiding the cabling, leaving a cleaner look.&lt;/p&gt;
+&lt;p&gt;On the software side, I could build upon the code of my &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light&#34;&gt;previous project&lt;/a&gt; and extend it to transmit an RGB matrix from my phone to the ESP32 which would in turn transmit it to the LED strip. In the app I could make some nice animations that would use the sound from the microphone as input.&lt;/p&gt;
+&lt;p&gt;With all this in mind, I ordered the material, waited for delivery, and started building.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/1.jpg&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/1_hub38430383d26de905c5c0ffe560e5c7c_1328263_1200x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/1_hub38430383d26de905c5c0ffe560e5c7c_1328263_1800x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/1_hub38430383d26de905c5c0ffe560e5c7c_1328263_600x0_resize_q70_linear.jpg&#34; alt=&#34;Assembling the LED Matrix&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;Assembling the LED Matrix&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;mistake-1-bad-power-estimations&#34;&gt;Mistake 1: Bad Power Estimations&lt;/h2&gt;
+&lt;p&gt;My biggest mistake was over estimating the power capacity of the buck converters.&lt;/p&gt;
+&lt;p&gt;I had experience with the super compact &lt;a href=&#34;https://duckduckgo.com/?q=mini+360+buck+converter&#34;&gt;&amp;ldquo;Mini 360&amp;rdquo; buck converter&lt;/a&gt; and I remembered from its spec that it could output up to &lt;code&gt;3A&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I had read somewhere that a single WS2812B LED could consume a maximum of &lt;code&gt;0.06A&lt;/code&gt;, so two strips of &lt;code&gt;1m&lt;/code&gt; should consume a maximum of &lt;code&gt;2 * 30 * 0.06A = 3.6A&lt;/code&gt;. I thought &lt;code&gt;0.06A&lt;/code&gt; was probably an extreme case and that the real limit would be lower so I decided to connect each Mini 360 to 2 strips.&lt;/p&gt;
+&lt;p&gt;However, I overlooked the fact that &lt;code&gt;3A&lt;/code&gt; was the &lt;strong&gt;peak&lt;/strong&gt; output of the Mini 360, only sustainable for a short period of time. In my practical tests the Mini 360 becomes &lt;strong&gt;dangerously hot&lt;/strong&gt; over &lt;code&gt;1.5A&lt;/code&gt; and I realized that only when testing the LED matrix after all the soldering and cabling was done.&lt;/p&gt;
+&lt;p&gt;The deadline was close, un-soldering and re-soldering everything to add more Mini 360s would mean hours of work which I simply didn&amp;rsquo;t had. In order to avoid missing the deadline I added some code to the ESP32 that would automatically limit the maximum brightness of the LEDs thus reducing the maximum current to a safe limit.&lt;/p&gt;
+&lt;p&gt;Lessons learned:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;double check the specifications of your components&lt;/li&gt;
+&lt;li&gt;thoroughly test a subset of your project before soldering everything&lt;/li&gt;
+&lt;li&gt;if you underestimate the power you may be able to scale down the usage your components and get away with it 😉&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;mistake-2-mixing-5v-and-33v-logic&#34;&gt;Mistake 2: Mixing 5V and 3.3V Logic&lt;/h2&gt;
+&lt;p&gt;The WS2812B LED strips are driven by &lt;code&gt;5V&lt;/code&gt; data signals. The ESP32 uses &lt;code&gt;3.3V&lt;/code&gt;, so common sense dictates that you need a &lt;a href=&#34;https://en.wikipedia.org/wiki/Level_shifter&#34;&gt;level shifter&lt;/a&gt; to interface the two. However this was not apparent to me because the LED strips work quite well &lt;em&gt;most of the time&lt;/em&gt; even with a &lt;code&gt;3.3V&lt;/code&gt; input.&lt;/p&gt;
+&lt;p&gt;This is because &lt;code&gt;3.3V&lt;/code&gt; &amp;ldquo;high&amp;rdquo; signals are high enough to be recognized as &amp;ldquo;high&amp;rdquo; from &lt;code&gt;5V&lt;/code&gt; components, &lt;em&gt;most of the time&lt;/em&gt;. Glitches and flickers start appearing when refreshing the LED strips at high frequency:&lt;/p&gt;
+&lt;video controls&gt;
+    &lt;source src=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/videos/flicker.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;/video&gt;
+&lt;p&gt;However, I disregarded this problem as either some weak soldering or wrong voltage levels on my buck converters and went onward finishing building the LED matrix. Only at the very end, when I took the time to properly debug the issue I found the actual cause of the flickering.&lt;/p&gt;
+&lt;p&gt;Since I did not want to wait for the delivery of a level shifter I started tinkering with the voltage levels of the buck converters and discovered that if I lowered the voltage of the buck converter that powered the first line of LEDs where the ESP32 was connected to, all the flickering would disappear.&lt;/p&gt;
+&lt;p&gt;This makes sense since I am actually making the LEDs work in a voltage range closer to the ESP32. This &amp;lsquo;hack&amp;rsquo; works but it left my first two strips emitting a slightly different color than the rest. Luckily it is hardly noticeable when playing fast animations.&lt;/p&gt;
+&lt;p&gt;Lessons learned:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;3.3V&lt;/code&gt; and &lt;code&gt;5V&lt;/code&gt; circuits require a level shifter to interface them&lt;/li&gt;
+&lt;li&gt;lowering the supply voltage of the &lt;code&gt;5V&lt;/code&gt; circuit (in this case) is enough to get away with it 😉&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;mistake-3-assuming-real-time-programming-is-easy&#34;&gt;Mistake 3: Assuming Real-Time Programming Is Easy&lt;/h2&gt;
+&lt;p&gt;Another mistake I made was to underestimate the complexity of building the software to drive the LED matrix.&lt;/p&gt;
+&lt;p&gt;I assumed that extending the code I already had from my &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light&#34;&gt;previous project&lt;/a&gt; would not take much and left it for the last week before New Year. I did the change fairly quickly but then I hit a serious problem.&lt;/p&gt;
+&lt;p&gt;The communication between my phone and the ESP32 is done using &lt;a href=&#34;https://en.wikipedia.org/wiki/Bluetooth_Low_Energy&#34;&gt;Bluetooth Low Energy&lt;/a&gt;. The ESP32 supports Bluetooth 4.2 which, configured with a large Maximum Transmission Unit (MTU) and the Data Length Extension Enabled (DLE), should about &lt;code&gt;478 KBit/s&lt;/code&gt; as measured in &lt;a href=&#34;https://www.novelbits.io/bluetooth-5-speed-maximum-throughput/&#34;&gt;this article&lt;/a&gt; (see Case 3).&lt;/p&gt;
+&lt;p&gt;For my use case I would need to transmit the color for 600 pixel at least 30 times per second.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;600 * 3B (number of RGB colors) = 1800B
+1800B * 30 = 54000B = 54KB
+54KB * 8 = 432KBit
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;432KBit&lt;/code&gt; are about 10% lower than &lt;code&gt;478KBit&lt;/code&gt;, so, when planning, I thought I would not have any problem.&lt;/p&gt;
+&lt;p&gt;However, reality is not that straightforward. The Bluetooth API are not really made for maximum throughput out of the box and optimizing both an Android app and the ESP32 requires reading lots of documentation and lots of trial and error. In the end, I did not have enough time to properly do it.&lt;/p&gt;
+&lt;p&gt;My initial tests showed miserable performances, in the range of 1 to 5 frame per second, with noticeable change in speed from time to time. That was unacceptable to show animations that react in real-time with the music.&lt;/p&gt;
+&lt;p&gt;Animations that slow are very hard to watch so I decided to create the animations directly on the ESP32 instead of my phone. That is not ideal because it is much faster to develop and release for a smartphone than a microcontroller.&lt;/p&gt;
+&lt;p&gt;With the short time left I chose one animation, the histogram of the audio frequencies, and hardcoded it in the ESP32. My phone would then only calculate the height of the histogram bars and send it. Since the histogram itself is very little (&lt;code&gt;20B&lt;/code&gt;, 1 byte for each column) I could get away with my limited bandwidth.&lt;/p&gt;
+&lt;p&gt;I had to make the histogram on the phone because it was the only device with a microphone. The ESP32 by itself cannot listen to sounds.&lt;/p&gt;
+&lt;p&gt;For curiosity, the histogram is calculated using the &lt;a href=&#34;https://en.wikipedia.org/wiki/Fast_Fourier_transform&#34;&gt;Fast Fourier transform&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Lessons learned:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;real-time task are a long process of optimization, plan accordingly&lt;/li&gt;
+&lt;li&gt;if you can&amp;rsquo;t meet the deadline, cut the features and you may get away with it 😉&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;mistake-4-dangling-power-cables&#34;&gt;Mistake 4: Dangling Power Cables&lt;/h2&gt;
+&lt;p&gt;I guess this is one of the things one has to learn the hard way.&lt;/p&gt;
+&lt;p&gt;Much like in software development you never do tests in Production, in hardware you do not leave your &amp;ldquo;delicate&amp;rdquo; components close to &amp;ldquo;dangerous&amp;rdquo; equipment like a power supply.&lt;/p&gt;
+&lt;p&gt;When testing the LED matrix I had my power supply at &lt;code&gt;12V&lt;/code&gt; connected directly with &lt;a href=&#34;https://duckduckgo.com/?q=allicator+clips&amp;amp;iax=images&amp;amp;ia=images&#34;&gt;alligator clips&lt;/a&gt;. My ESP32 was also nearby supplying the data to the LED strips. Accidentally, the data line from the ESP32 entered in contact with the alligator clips of the power supply, immediately destroying my ESP32 development board and a few meters of LED strips.&lt;/p&gt;
+&lt;p&gt;Luckily this happened quite early so I could wait for the delivery of a replacement ESP32 and new LED strips. I now make sure to always isolate my dangling cables with some &lt;a href=&#34;https://duckduckgo.com/?q=masking+tape&amp;amp;iax=images&amp;amp;ia=images&#34;&gt;masking tape&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Lessons learned:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;isolate parts of your projects that operate at different voltage&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;final-result&#34;&gt;Final Result&lt;/h2&gt;
+&lt;p&gt;Here is a video that shows the internal cabling of the LED matrix. Before hanging it on the wall I simply folded the rest of the vinyl film to cover the circuit.&lt;/p&gt;
+&lt;video controls&gt;
+    &lt;source src=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/videos/wip.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;/video&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/final.jpg&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/final_hu1f4fc3dddcfd8f126b9523c19ee76dd9_166887_1200x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/final_hu1f4fc3dddcfd8f126b9523c19ee76dd9_166887_1800x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/final_hu1f4fc3dddcfd8f126b9523c19ee76dd9_166887_600x0_resize_q70_linear.jpg&#34; alt=&#34;Final Result&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;Final Result&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;When I turned the LED matrix on at New Year my friends were ecstatic. It made all the hours spent soldering and testing worth it.&lt;/p&gt;
+&lt;p&gt;I have learned a lot from this project. It is something I had never attempted at this scale and I am now working on improving it to match my original plan. Stay tuned.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;a href=&#34;https://news.ycombinator.com/item?id=30140641&#34;&gt;Comments&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Bluetooth RGB Light</title>
+      <link>https://aradaelli.com/blog/bluetooth-rgb-light/</link>
+      <pubDate>Sat, 30 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>https://aradaelli.com/blog/bluetooth-rgb-light/</guid>
+      <description>&lt;p&gt;I was scouting Amazon and eBay for a controllable light to bring to parties, but I was left disappointed. The low end market is full of low power lights which are not bright enough and are controlled through a lousy remote controller. To get decent devices you need to go in the high end space where you can easily spend a few hundreds quids.&lt;/p&gt;
+&lt;p&gt;So I thought I should come up with my own solution.&lt;/p&gt;
+&lt;p&gt;I started by coming up with a list of requirements:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Portable and battery powered&lt;/li&gt;
+&lt;li&gt;Multicolor&lt;/li&gt;
+&lt;li&gt;Powerful enough to light up a dark room&lt;/li&gt;
+&lt;li&gt;Controllable with a smartphone app&lt;/li&gt;
+&lt;li&gt;Programmable with custom effects&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Given those requirements I started searching online for electric components that would fit the requirements.&lt;/p&gt;
+&lt;p&gt;Since the light would be battery powered, energy consumption is critical. The most efficient form of lighting is provided by LEDs. I wanted a multicolor light so it needed to be an RGB led. I settled on a 10 watts &lt;a href=&#34;https://en.wikipedia.org/wiki/Chip_on_board&#34;&gt;Chip-on-Board (COB)&lt;/a&gt; RGB LED.&lt;/p&gt;
+&lt;p&gt;For communication between the light and my smartphone I chose the &lt;a href=&#34;https://duckduckgo.com/?q=espressif+esp32&amp;amp;iax=images&amp;amp;ia=images&#34;&gt;ESP32 microcontroller&lt;/a&gt; which, for less than 5 quids, gives you: Wireless, Bluetooth, 32 KiB of RAM, and 34 programmable pins, &lt;a href=&#34;https://en.wikipedia.org/wiki/Pulse-width_modulation&#34;&gt;Pulse-width modulation (PWM)&lt;/a&gt; signals, and much more which is not relevant for this project.&lt;/p&gt;
+&lt;p&gt;For driving the LED, I was initially thinking of buying 3 separate LED driver modules, but they are quite expensive (compared to buying the individual components separately) unless you order them from China through Aliexpress or similar. However that would mean waiting for at least one month for delivery, so I decided to build my own LED driver from discrete components. Comparing the chips that existing LED driver are using and the availability of those chip I settled for using the &lt;a href=&#34;https://duckduckgo.com/?t=ffab&amp;amp;q=PT4115+schematic&amp;amp;iax=images&amp;amp;ia=images&#34;&gt;PT4115&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Only when the chips arrived I realized that I had ordered them in the &lt;a href=&#34;https://en.wikipedia.org/wiki/Surface-mount_technology&#34;&gt;Surface-mount technology (SMD)&lt;/a&gt; package. Those are intended to be soldered on a custom &lt;a href=&#34;https://en.wikipedia.org/wiki/Printed_circuit_board&#34;&gt;printed circuit board (PCB)&lt;/a&gt;. However for my prototype I intended to use a simple soldering protoboard, so I had to solder &amp;ldquo;legs&amp;rdquo; to all the SMD components in order to be able to plug them in the protoboard.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/legs.jpg&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/legs_hu4ef223e68975b5de3cff3e75c602f75c_638154_1200x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/legs_hu4ef223e68975b5de3cff3e75c602f75c_638154_1800x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/legs_hu4ef223e68975b5de3cff3e75c602f75c_638154_600x0_resize_q70_linear.jpg&#34; alt=&#34;Adding &amp;amp;ldquo;legs&amp;amp;rdquo; to the PT4115&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;Adding &amp;amp;ldquo;legs&amp;amp;rdquo; to the PT4115&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;The circuit to run the PT4115 is quite simple and a reference design can be found in the official specifications along with the rules to pick the side components.&lt;/p&gt;
+&lt;p&gt;For Reference:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;DIM&lt;/strong&gt; is the PWM control pin&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CSN&lt;/strong&gt; is the control sensing pin which helps the chip detect the amount of current going in the LED&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SW&lt;/strong&gt; is the switch pin which is turned on and off automatically to keep the right amount of current flowing through the LED.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/pt4115_circuit.png&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/pt4115_circuit_hubdb44f4494ecd35a6069e02e698ea3f6_27125_1200x0_resize_q70_linear_3.png&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/pt4115_circuit_hubdb44f4494ecd35a6069e02e698ea3f6_27125_1800x0_resize_q70_linear_3.png&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/pt4115_circuit_hubdb44f4494ecd35a6069e02e698ea3f6_27125_600x0_resize_q70_linear_3.png&#34; alt=&#34;PT4115 sample circuit&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;PT4115 sample circuit&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Initially I thought to build my own case for the light, but after a quick search on eBay I found many variations of outdoor flood lights which I could simply modify for my purposes.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/original-light.jpg&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/original-light_huf5c5de6739591b2ae0a1250c19d47f32_631651_1200x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/original-light_huf5c5de6739591b2ae0a1250c19d47f32_631651_1800x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/original-light_huf5c5de6739591b2ae0a1250c19d47f32_631651_600x0_resize_q70_linear.jpg&#34; alt=&#34;Light Front&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;Light Front&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;The light from eBay came with its own LED driver mounted on the back. It was quite bulky and unnecessary so it was the first thing I removed.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/back-open.jpg&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/back-open_huf47e3ece652e0a2102b4b8b0f3b434e1_846093_1200x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/back-open_huf47e3ece652e0a2102b4b8b0f3b434e1_846093_1800x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/back-open_huf47e3ece652e0a2102b4b8b0f3b434e1_846093_600x0_resize_q70_linear.jpg&#34; alt=&#34;Original LED Driver&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;Original LED Driver&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Then I proceeded to open the led compartment and finding out how much space I had to fit my own circuits. I was pleased to find out that the case was quite oversized and I had plenty of space to fit everything I needed.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-1.jpg&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-1_hu8de0043513af99663a01e8eca35b58c8_970054_1200x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-1_hu8de0043513af99663a01e8eca35b58c8_970054_1800x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-1_hu8de0043513af99663a01e8eca35b58c8_970054_600x0_resize_q70_linear.jpg&#34; alt=&#34;Frame unmounted&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;Frame unmounted&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-2.jpg&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-2_hu2c2258d7a09d5fc42ba0bdbd0952b8cc_765492_1200x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-2_hu2c2258d7a09d5fc42ba0bdbd0952b8cc_765492_1800x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-2_hu2c2258d7a09d5fc42ba0bdbd0952b8cc_765492_600x0_resize_q70_linear.jpg&#34; alt=&#34;Original LED&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;Original LED&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;The next step was to build the LED driver. I used a small piece of protoboard and duplicated 3 times the circuit that I have showed earlier for the PT4115. In the next photo I have highlighted the small SMD resistors for &amp;ldquo;Rs&amp;rdquo;. It is not an elegant solution, but it works.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/led-driver.jpg&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/led-driver_hub35f6fe963cd384efe53fee927fddda3_997912_1200x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/led-driver_hub35f6fe963cd384efe53fee927fddda3_997912_1800x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/led-driver_hub35f6fe963cd384efe53fee927fddda3_997912_600x0_resize_q70_linear.jpg&#34; alt=&#34;RGB LED Driver&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;RGB LED Driver&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;I had to do the same trick of adding &amp;ldquo;legs&amp;rdquo; to the ESP32 module as well in order to solder it. For powering it I chose to use a premade buck converter module, &lt;a href=&#34;https://duckduckgo.com/?q=mini+360+buck+regulator&amp;amp;iax=images&amp;amp;ia=images&#34;&gt;the mini-360&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/esp32.jpg&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/esp32_hube53de9591ba4d8fbe78a2866235fcf7_762070_1200x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/esp32_hube53de9591ba4d8fbe78a2866235fcf7_762070_1800x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/esp32_hube53de9591ba4d8fbe78a2866235fcf7_762070_600x0_resize_q70_linear.jpg&#34; alt=&#34;ESP32 WROOM&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;ESP32 WROOM&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Then it was time to connect everything together and test the result. In the next video you can see that the the LED turns on only for a brief moment. That&amp;rsquo;s because as soon as the ESP32 finishes booting its pins enter a low state, effectively turning off the LED drivers and the LED itself.&lt;/p&gt;
+&lt;video controls&gt;
+    &lt;source src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/videos/first-test.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;/video&gt;
+&lt;p&gt;Having verified that the circuit works I proceeded fitting everything nicely in the light case. I used the black tape to set in place some transparent plastic in order to isolate the circuit from the metal case and avoid shorts. The dangling cables that you can see taped at the top of the next photo are used to flash the firmware on the microcontroller.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/fitted.jpg&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/fitted_hua3749bb28d640440d92fc0a9fffe6f0a_728022_1200x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/fitted_hua3749bb28d640440d92fc0a9fffe6f0a_728022_1800x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/fitted_hua3749bb28d640440d92fc0a9fffe6f0a_728022_600x0_resize_q70_linear.jpg&#34; alt=&#34;Fitting everything in the light case&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;Fitting everything in the light case&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Next, it was time to write the firmware for the ESP32 so that it can control the individual colors and receive the commands from my smartphone. I read extensively the documentation for the ESP32 and found a couple of API for my use case: the &lt;a href=&#34;https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/ledc.html&#34;&gt;LED Control (LEDC) API&lt;/a&gt; which allows me to output PWM signals and the &lt;a href=&#34;https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/bluetooth/nimble/index.html&#34;&gt;NimBLE library&lt;/a&gt; for Bluetooth Low Energy communication.&lt;/p&gt;
+&lt;p&gt;After spending a couple of days understanding the examples from the documentation I managed to put together my own firmware that exposes one Bluetooth LE characteristic that directly maps to the 3 RGB channels of the LED. The code is available on &lt;a href=&#34;https://github.com/skilion/rgb-light-server&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The last remaining task was to build an Android App to connect to the ESP32 and send the light colors. I quickly hacked together a proof of concept that allows me to toggle the basic colors for testing, automatically switch between all colors randomly, flash the color at different speeds, smooth the color transition and control the light intensity (brightness). The code, again, is available on &lt;a href=&#34;https://github.com/skilion/rgb-led-control-app&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;And here you can see the final result.&lt;/p&gt;
+&lt;video controls&gt;
+    &lt;source src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/videos/end-result.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;/video&gt;
+&lt;p&gt;Overall it has been a fun project that allowed me to play with electronics and learn a lot. The prototype hits all my requirements but the brightness is much less than I expected. I think a proper flood light should be at least 50W to make a good impression. I&amp;rsquo;ll come back at this project and see if I can upsize the LED while still keeping everything battery powered.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Map My Mountains</title>
+      <link>https://aradaelli.com/blog/mapmymountains/</link>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>https://aradaelli.com/blog/mapmymountains/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;In Jan 2018, shortly after my graduation, I was offered a contract to work for a team of PhD students lead by &lt;a href=&#34;https://fraternali.faculty.polimi.it/&#34;&gt;Prof. Piero Fraternali&lt;/a&gt;. The team operated as part of the &lt;a href=&#34;https://www.deib.polimi.it/eng/home-page&#34;&gt;&amp;ldquo;Department of Electronics, Information and Bioengineering&amp;rdquo;&lt;/a&gt; inside the university of &lt;a href=&#34;https://www.polimi.it/&#34;&gt;Politecnico di Milano&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I was hired to develop a &lt;a href=&#34;https://en.wikipedia.org/wiki/Geographic_information_system&#34;&gt;Geographical Information System&lt;/a&gt; (GIS) from scratch to provide good quality data for an ongoing research project. The research project goal was to develop a &lt;a href=&#34;https://en.wikipedia.org/wiki/Machine_learning&#34;&gt;Machine Learning&lt;/a&gt; (ML) algorithm to recognize mountain peaks from the &lt;a href=&#34;https://en.wikipedia.org/wiki/Digital_elevation_model&#34;&gt;Digital Elevation Model&lt;/a&gt; (DEM) of the earth. Essentially a fancy way to find mountains using the 3D model of the earth.&lt;/p&gt;
+&lt;p&gt;The outcome of any ML project is highly dependent on the quality of data used as input therefore it is worth to have a good pipeline in place that can clean and filter data.&lt;/p&gt;
+&lt;p&gt;Furthermore we planned to use the data produced by the new GIS for &lt;a href=&#34;https://peaklens.com/&#34;&gt;&amp;ldquo;Peaklens&amp;rdquo;&lt;/a&gt; (created by the same team) which is an app that recognizes mountains using the camera of your smartphone. It works great and it is completely free, you should try it out for yourself!&lt;/p&gt;
+&lt;h2 id=&#34;the-project&#34;&gt;The Project&lt;/h2&gt;
+&lt;p&gt;The project consisted of three main tasks:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a data model to store geographical data coming from different data sources with annotations and corrections.&lt;/li&gt;
+&lt;li&gt;Create multiple data pipelines to import publicly accessible geographical data sources into our data model.&lt;/li&gt;
+&lt;li&gt;Create a web application to allow human annotators to review the data and validate it through &lt;a href=&#34;https://en.wikipedia.org/wiki/Crowdsourcing&#34;&gt;crowdsourcing&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/mapmymountains/images/1.jpg&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/1_hub3b4b797b60b52949b0c4316d4121bf6_541946_1200x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/1_hub3b4b797b60b52949b0c4316d4121bf6_541946_1800x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/mapmymountains/images/1_hub3b4b797b60b52949b0c4316d4121bf6_541946_600x0_resize_q70_linear.jpg&#34; alt=&#34;Annotation View - 3D globe&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;Annotation View - 3D globe&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;1-data-model&#34;&gt;1. Data Model&lt;/h2&gt;
+&lt;p&gt;I kicked off the project with an iterative process of:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Collecting and defining the requirements as use cases.&lt;/li&gt;
+&lt;li&gt;Designing a data model to account for the use case.&lt;/li&gt;
+&lt;li&gt;Simulating the usage of the data model and finding new questions for the stakeholders.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The process required an interactive process with the people involved in the ongoing ML research project.&lt;/p&gt;
+&lt;p&gt;I sketched the data model as &lt;a href=&#34;https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model&#34;&gt;Entity-Relationship&lt;/a&gt; and iteratively improved until it satisfied all the requirements the system needed to support. You can see the final result &lt;a href=&#34;https://gitlab.com/wds-co/mapmymountains/-/tree/main/data-model&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We had informal meetings to decide which database to use. The alternatives were either a traditional relational database (PostgreSQL) or a NoSQL document database (MongoDB).&lt;/p&gt;
+&lt;p&gt;In the end we decided to go with PostgreSQL because:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;no need to scale (storage expectations &amp;lt;100GB, user base &amp;lt;100 people)&lt;/li&gt;
+&lt;li&gt;it supports geometrical types out of the box which are convenient for geographical data (points, polylines, polygons)&lt;/li&gt;
+&lt;li&gt;strong data consistency (the schema enforces types and relations)&lt;/li&gt;
+&lt;li&gt;we expected the need for multiple JOINs between different data sources and user annotations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/mapmymountains/images/2.jpg&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/2_hua215daeeb69f38cb91ca12e69a8702e0_974195_1200x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/2_hua215daeeb69f38cb91ca12e69a8702e0_974195_1800x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/mapmymountains/images/2_hua215daeeb69f38cb91ca12e69a8702e0_974195_600x0_resize_q70_linear.jpg&#34; alt=&#34;Annotation View - 2D map&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;Annotation View - 2D map&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;2-import-from-geographical-data-sources&#34;&gt;2. Import from Geographical Data Sources&lt;/h2&gt;
+&lt;p&gt;Once the data model was defined, the next step was to import as much data as possible. For this reason I investigated publicly accessible geographical data sources, studied their format and APIs, wrote and tested scripts to download their data.&lt;/p&gt;
+&lt;p&gt;The data model is able to store reference to the unique original identifier of each downloaded element so we could have potentially contributed back to each source following the Open Source spirit of giving back to the community.&lt;/p&gt;
+&lt;p&gt;By the time my contract ended I had written scripts to import mountain peaks from:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.openstreetmap.org/&#34;&gt;Open Street Maps&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.geonames.org/&#34;&gt;GeoNames&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.nrcan.gc.ca/&#34;&gt;Canadian Geographical Names&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dati.lombardia.it/&#34;&gt;Open Data of Regione Lombardia&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/mapmymountains/images/3.png&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/3_hu7570831f7e16eb2dcb2b0c312a7de09a_35460_1200x0_resize_q70_linear_3.png&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/3_hu7570831f7e16eb2dcb2b0c312a7de09a_35460_1800x0_resize_q70_linear_3.png&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/mapmymountains/images/3_hu7570831f7e16eb2dcb2b0c312a7de09a_35460_600x0_resize_q70_linear_3.png&#34; alt=&#34;View to toggle permissions per user&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;View to toggle permissions per user&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-crowdsourcing-web-app&#34;&gt;3. Crowdsourcing Web App&lt;/h2&gt;
+&lt;p&gt;The last task was the development of a Web App to annotate and review the data. &lt;a href=&#34;https://1drv.ms/w/s!Ar26l2ZvsfJh-2Ntn2FmqRLeCGiJ?e=EJBBAs&#34;&gt;Here&lt;/a&gt; you can peek the requirements specification document.&lt;/p&gt;
+&lt;p&gt;For the tech stack we agreed on using &lt;a href=&#34;https://nodejs.org/&#34;&gt;Node Js&lt;/a&gt; for back-end and &lt;a href=&#34;https://vuejs.org/&#34;&gt;Vue Js&lt;/a&gt; for frontend, the main reason being keeping all the code base in Javascript. The web app was hosted on the private cloud of Politecnico di Milano which is based on &lt;a href=&#34;https://www.openstack.org/&#34;&gt;Open Stack&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For visualizations I have used &lt;a href=&#34;https://cesium.com/platform/cesiumjs/&#34;&gt;Cesium Js&lt;/a&gt; which provides interactive 3D globes and &lt;a href=&#34;https://leafletjs.com/&#34;&gt;Leaflet Js&lt;/a&gt; for rendering 2D maps. For the UI I have used &lt;a href=&#34;https://bootstrap-vue.org/&#34;&gt;BootstrapVue&lt;/a&gt; which provides ready to use Vue components based on Bootstrap.&lt;/p&gt;
+&lt;p&gt;For the development process I have followed an Agile approach with 2 weeks sprints after which I demoed the new features and collected feedback for the next iteration.&lt;/p&gt;
+&lt;p&gt;I really enjoyed working on this project because it allowed me to get full-stack development experience and also some planning skills as I was fully entrusted in defining my tasks and delivering them. During the project I also mentored a student who then helped me in some development tasks.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/mapmymountains/images/4.png&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/4_hu094435ffaa236d8e1cecc6370c401f55_303296_1200x0_resize_q70_linear_3.png&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/4_hu094435ffaa236d8e1cecc6370c401f55_303296_1800x0_resize_q70_linear_3.png&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/mapmymountains/images/4_hu094435ffaa236d8e1cecc6370c401f55_303296_600x0_resize_q70_linear_3.png&#34; alt=&#34;View to create new crowdsourcing campaigns&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;View to create new crowdsourcing campaigns&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;live-demo&#34;&gt;Live Demo&lt;/h2&gt;
+&lt;p&gt;Before writing this article I decided to host a live instance of the Web App on Amazon AWS so that you can could see it live. I contacted Piero who kindly gave me permission to share the source code of the Web App for my portfolio, since it is not in use anymore.&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Resuscitating&amp;rdquo; a project that is &amp;ldquo;only&amp;rdquo; 3/4 years old proved to be more difficult than I thought.&lt;/p&gt;
+&lt;p&gt;I expected it to be fully working as I left it. However simply running it locally, using the latest stable Node Js resulted in some weird connection issues with the database that kept making my unit tests fail. I traced it back to the NPM library I used to connect to the DB (pg-promise) and updating it fixed the problem promptly.&lt;/p&gt;
+&lt;p&gt;I have also fall victim of a strange bug where the Vue CLI Service did not exit after finishing building the production bundle. This didn&amp;rsquo;t cope well with my goal of having a CI pipeline because it makes the automated process hang and timeout. I fixed it again with more targeted package updates.&lt;/p&gt;
+&lt;p&gt;I have tried updating all the NPM packages at once but that resulted in many incompatibilities appearing between my code and the new packages. Since I did not want to spend time fixing code, I only did targeted updates for specific packages.&lt;/p&gt;
+&lt;p&gt;This proved me how unstable is the entire NPM/Node Js ecosystem. Today I rather use a self-contained web framework that provides everything out of the box such as ASP.NET, Django, Ruby on Rails, or Laravel, and stay away from the dependency hell that is the Javascript ecosystem with NPM.&lt;/p&gt;
+&lt;p&gt;For hosting the Web App I have used: Amazon RDS for the database (I created a PostgreSQL instance), Amazon Elastic Beanstalk for the back-end REST API, and Amazon S3 for the front-end (configured to serve a static website). Both the back-end and front-end are served on vanilla HTTP to avoid having to deal with SSL certificates.&lt;/p&gt;
+&lt;p&gt;Overall the setups works quite nicely, it fits well within the limit of the Amazon Free Tier. It also has continuous deployment thanks to Github Actions.&lt;/p&gt;
+&lt;p&gt;You can find the live demo at: &lt;a href=&#34;http://mapmymountains.aradaelli.com&#34;&gt;http://mapmymountains.aradaelli.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Source code: &lt;a href=&#34;https://gitlab.com/wds-co/mapmymountains&#34;&gt;https://gitlab.com/wds-co/mapmymountains&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
+&lt;p&gt;I want to mention the whole team at Politecnico di Milano with whom I have worked from 2018 to 2019. In 1 year I have learned a lot and I still have a great relationship with them:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Piero Fraternali (&lt;a href=&#34;https://fraternali.faculty.polimi.it/&#34;&gt;Website&lt;/a&gt;-&lt;a href=&#34;https://www.linkedin.com/in/pierofraternali/&#34;&gt;Linkedin&lt;/a&gt;-&lt;a href=&#34;https://scholar.google.co.uk/citations?user=IhFm8bIAAAAJ&#34;&gt;Google Scholar&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Chiara Pasini (&lt;a href=&#34;https://www.linkedin.com/in/chiara-pasini-6091a7b5/&#34;&gt;Linkedin&lt;/a&gt;-&lt;a href=&#34;https://scholar.google.co.uk/citations?user=KC8ZkF0AAAAJ&#34;&gt;Google Scholar&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Darian Frajberg (&lt;a href=&#34;https://www.linkedin.com/in/darianf/&#34;&gt;Linkedin&lt;/a&gt;-&lt;a href=&#34;https://scholar.google.co.uk/citations?user=fWJsLhgAAAAJ&#34;&gt;Google Scholar&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Carlo Bernaschina (&lt;a href=&#34;https://www.bernaschina.com/&#34;&gt;Website&lt;/a&gt;-&lt;a href=&#34;https://www.linkedin.com/in/b3rn475/&#34;&gt;Linkedin&lt;/a&gt;-&lt;a href=&#34;https://scholar.google.co.uk/citations?user=Pt83gAMAAAAJ&#34;&gt;Google Scholar&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Nahime Torres (&lt;a href=&#34;https://www.linkedin.com/in/rocionahimetorres/&#34;&gt;Linkedin&lt;/a&gt;-&lt;a href=&#34;https://scholar.google.co.uk/citations?user=7dZV0f8AAAAJ&#34;&gt;Google Scholar&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Sergio Herrera Gonzalez (&lt;a href=&#34;https://www.linkedin.com/in/herrera-sergio/&#34;&gt;Linkedin&lt;/a&gt;-&lt;a href=&#34;https://scholar.google.com/citations?user=lCD71y0AAAAJ&#34;&gt;Google Scholar&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Federico Milani (&lt;a href=&#34;https://www.milanif.it/&#34;&gt;Website&lt;/a&gt;-&lt;a href=&#34;https://www.linkedin.com/in/federico-milani/&#34;&gt;Linkedin&lt;/a&gt;-&lt;a href=&#34;https://scholar.google.com/citations?user=Mtj9iDAAAAAJ&#34;&gt;Google Scholar&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Product Configurator</title>
+      <link>https://aradaelli.com/blog/product-configurator/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
+      <guid>https://aradaelli.com/blog/product-configurator/</guid>
+      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;In parallel to my master studies I enrolled in an honor program called &lt;a href=&#34;https://www.asp-poli.it/&#34;&gt;Alta Scuola Politecnica&lt;/a&gt;. The greatest thing about this program has been the graduation project which consisted in a collaboration with a real business.&lt;/p&gt;
+&lt;p&gt;I joined a team of brilliant colleagues, from different backgrounds in management engineering, mechanical engineering and physics. Together we acted as a consulting team for a business, understood their problem, performed a research about the state of the art and delivered a solution.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/product-configurator/images/configurator.png&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/configurator_hu787cdf68fd21308a21a21dd9f4d0df5f_265605_1200x0_resize_q70_linear_3.png&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/configurator_hu787cdf68fd21308a21a21dd9f4d0df5f_265605_1800x0_resize_q70_linear_3.png&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/product-configurator/images/configurator_hu787cdf68fd21308a21a21dd9f4d0df5f_265605_600x0_resize_q70_linear_3.png&#34; alt=&#34;Screenshot of the website at the end of the configuration process&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;Screenshot of the website at the end of the configuration process&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+&lt;p&gt;The project I joined was sponsored by &lt;a href=&#34;https://www.inkmaker.com/&#34;&gt;Inkmaker Srl&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Inkmaker is a global producer of ink dispensing machines. These machines mix ink to produce the exact color required for printing or painting products at industrial scale.&lt;/p&gt;
+&lt;p&gt;The ink dispensers are large and quite specialized machines. Clients may have strict constraints concerning the available plant area or uncommon requirements on the ink mixing capabilities. Therefore the development of each machine tends to be quite customized for each client.&lt;/p&gt;
+&lt;p&gt;However Inkmaker also have a portfolio of entry-level machines that address the demand of their smaller customer with just a few variations. The vision of Inkmaker was to enable their small customers to self design their equipment by providing a set of standard modules to be mixed and matched. Those modules could be combined producing different assembly combinations and layouts to satisfy most request with minimal involvement from Inkmaker, thus increasing the overall efficiency.&lt;/p&gt;
+&lt;p&gt;The solution identified by Inkmaker to realize this vision consisted in the development of a &lt;a href=&#34;https://en.wikipedia.org/wiki/Configurator&#34;&gt;product configurator&lt;/a&gt; that would allow clients to design their own machines with a few clicks, resulting in reduced &lt;a href=&#34;https://en.wikipedia.org/wiki/Lead_time&#34;&gt;lead time&lt;/a&gt; and errors in order interpretations.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/product-configurator/images/inventor.png&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/inventor_hudd491f4519a12da25df6141457d5909d_266301_1200x0_resize_q70_linear_3.png&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/inventor_hudd491f4519a12da25df6141457d5909d_266301_1800x0_resize_q70_linear_3.png&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/product-configurator/images/inventor_hudd491f4519a12da25df6141457d5909d_266301_600x0_resize_q70_linear_3.png&#34; alt=&#34;Screenshot of a machine assembly&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;Screenshot of a machine assembly&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;my-contribution&#34;&gt;My Contribution&lt;/h2&gt;
+&lt;p&gt;My work was based on the results of my dear colleagues who took care of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Analyzing the business processes of Inkmaker (sales, design, purchase).&lt;/li&gt;
+&lt;li&gt;Understanding the mechanical constraints of the product and define how to modularize it.&lt;/li&gt;
+&lt;li&gt;Developing a model for generating a machine starting from the client requirements using the available modules.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I applied my skills in two areas:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Performing a research of the &lt;a href=&#34;https://en.wikipedia.org/wiki/State_of_the_art&#34;&gt;state of the art&lt;/a&gt; of existing product configurators.&lt;/li&gt;
+&lt;li&gt;Implementing a prototype product configurator to showcase to Inkmaker.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;state-of-the-art&#34;&gt;State of the Art&lt;/h3&gt;
+&lt;p&gt;My first task consisted in researching existing product configurators  to identify the best ones suited for the requirements of Inkmaker.&lt;/p&gt;
+&lt;p&gt;I researched both:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Software available &amp;ldquo;off the shelf&amp;rdquo; that could be used to customize a generic product.&lt;/li&gt;
+&lt;li&gt;Established product configurators from major retailers to study their offering and capabilities.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I wrote a report that summarized the pros and cons of each product, their features, their user interface (UI) and their configuration process.&lt;/p&gt;
+&lt;p&gt;The outcome of the research lead to the discovery of a few products that were fit for Inkmaker use-cases. Here is a feature matrix comparing the products against our requirements:&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/product-configurator/images/feature_matrix.png&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/feature_matrix_huc4cfaff797883a9ed97a3c112e2894ab_24785_1200x0_resize_q70_linear_3.png&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/feature_matrix_huc4cfaff797883a9ed97a3c112e2894ab_24785_1800x0_resize_q70_linear_3.png&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/product-configurator/images/feature_matrix_huc4cfaff797883a9ed97a3c112e2894ab_24785_600x0_resize_q70_linear_3.png&#34; alt=&#34;Feature matrix comparing selected configurators&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;Feature matrix comparing selected configurators&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;The best candidate &amp;ldquo;A&amp;rdquo; was &lt;em&gt;Autodesk Configurator 360&lt;/em&gt; (now discontinued).&lt;/p&gt;
+&lt;h3 id=&#34;prototype&#34;&gt;Prototype&lt;/h3&gt;
+&lt;p&gt;My second task consisted in learning the inner workings of Configurator 360, understanding how to integrate it in a customized experience for Inkmaker, and developing a prototype.&lt;/p&gt;
+&lt;p&gt;Configurator 360 was a cloud based &lt;a href=&#34;https://en.wikipedia.org/wiki/Software_as_a_service&#34;&gt;software as a service&lt;/a&gt; (SaaS). CAD designs could be uploaded to it and then displayed through an interactive &lt;a href=&#34;https://en.wikipedia.org/wiki/Web_widget&#34;&gt;web widget&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I decided to build a web application that would first guide the customer through the configuration process, then calculate the best configuration for the ink dispenser, and finally provide the result to Configurator 360 which would then generate the engineering drawings, 3D visualizations, and bill of materials.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/product-configurator/images/requirements.png&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/requirements_hu7a0e9dec5cba73ddd0aeb6aa59197ea3_29527_1200x0_resize_q70_linear_3.png&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/requirements_hu7a0e9dec5cba73ddd0aeb6aa59197ea3_29527_1800x0_resize_q70_linear_3.png&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/product-configurator/images/requirements_hu7a0e9dec5cba73ddd0aeb6aa59197ea3_29527_600x0_resize_q70_linear_3.png&#34; alt=&#34;Screenshot of the website during the configuration process&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;Screenshot of the website during the configuration process&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;The web application was built in C# ASP.NET with Javascript and JQuery for frontend. It was deployed on Amazon EC2 to provide a demo to show to Inkmaker. Customer details would be saved in a SQL database for reference and potentially integrate with the company ERP.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/product-configurator/images/architecture.png&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/architecture_hu0c6cfbac0553aa9b9145d6f9fb377cb3_38685_1200x0_resize_q70_linear_3.png&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/architecture_hu0c6cfbac0553aa9b9145d6f9fb377cb3_38685_1800x0_resize_q70_linear_3.png&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/product-configurator/images/architecture_hu0c6cfbac0553aa9b9145d6f9fb377cb3_38685_600x0_resize_q70_linear_3.png&#34; alt=&#34;Architecture diagram&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;Architecture diagram&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
+&lt;p&gt;I want to credit the rest of the &lt;a href=&#34;https://www.asp-poli.it/projects/modula-web-configurator-for-automatic-dispensing-system/&#34;&gt;Modula&lt;/a&gt; team from which I learned a lot and together we delivered this fantastic project.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Alex Saja (&lt;a href=&#34;https://www.linkedin.com/in/alexsaja/&#34;&gt;Linkedin&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Alfredo Fantetti (&lt;a href=&#34;https://www.linkedin.com/in/alfredo-fantetti-4722bbb7/&#34;&gt;Linkedin&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Arianna Rosa Brusin (&lt;a href=&#34;https://www.linkedin.com/in/arianna-rosa-brusin/&#34;&gt;Linkedin&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Giovanni Prencipe (&lt;a href=&#34;https://www.linkedin.com/in/giovanni-prencipe-926a7311b/&#34;&gt;Linkedin&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Sara Mottola (&lt;a href=&#34;https://www.linkedin.com/in/saramottola/&#34;&gt;Linkedin&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Stefano Amato (&lt;a href=&#34;https://www.linkedin.com/in/stefanoamato93/&#34;&gt;Linkedin&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>We Are Made of Dreams</title>
+      <link>https://aradaelli.com/blog/dreams/</link>
+      <pubDate>Sun, 12 Oct 2014 00:00:00 +0000</pubDate>
+      <guid>https://aradaelli.com/blog/dreams/</guid>
+      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;For me, Minecraft could easily be the greatest game of all time. The main reasons being that it is a &amp;ldquo;meta-game&amp;rdquo;, a game that allows you to build other games.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/dreams/images/minecraft.jpg&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/dreams/images/minecraft_hu164eb22f1cd6a1b235b02a054b9f11e1_292557_1200x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/dreams/images/minecraft_hu164eb22f1cd6a1b235b02a054b9f11e1_292557_1800x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/dreams/images/minecraft_hu164eb22f1cd6a1b235b02a054b9f11e1_292557_600x0_resize_q70_linear.jpg&#34; alt=&#34;Minecraft&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;Minecraft&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;The first time I played it I was confused by the absence of a story to follow or objective to complete. But the more I played it, the more I started to be addicted because I was building my own world and creating my own rules! The utter simplicity and freedom that a world made of blocks could create really impressed me. Furthermore, people online created (and still are creating) staggering detailed worlds and custom games using official and custom servers.&lt;/p&gt;
+&lt;p&gt;After playing Minecraft for a long time, I could not resist to try to build my own 3D engine and replicate the technology behind it. I read many articles which explained the inner workings of the game and then get to code.&lt;/p&gt;
+&lt;p&gt;When I got a prototype working, I was puzzled on what to make out of it.&lt;/p&gt;
+&lt;p&gt;I didn&amp;rsquo;t want to embark in making a full video game, so I decided to build a self-contained experience, a &lt;a href=&#34;https://en.wikipedia.org/wiki/Demoscene&#34;&gt;demo&lt;/a&gt;; or in simpler terms, an &amp;ldquo;interactive video&amp;rdquo;.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;vimeo&#34;&gt;
+  &lt;div style=&#34;padding:56.25% 0 0 0;position:relative;&#34;&gt;
+    &lt;iframe src=&#34;https://player.vimeo.com/video/223964278?h=25900eaca6&amp;amp;badge=0&amp;amp;autopause=0&amp;amp;player_id=0&amp;amp;app_id=58479&#34; frameborder=&#34;0&#34; allow=&#34;autoplay; fullscreen; picture-in-picture&#34; allowfullscreen style=&#34;position:absolute;top:0;left:0;width:100%;height:100%;&#34;&gt;&lt;/iframe&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script src=&#34;https://player.vimeo.com/api/player.js&#34;&gt;&lt;/script&gt;
+&lt;h2 id=&#34;analysis&#34;&gt;Analysis&lt;/h2&gt;
+&lt;p&gt;The code is written in &lt;a href=&#34;https://dlang.org/&#34;&gt;D&lt;/a&gt; as at the time I decided it would become my go to language after a long search for a modern alternative to C++.&lt;/p&gt;
+&lt;p&gt;Reading through the code today, the most interesting things are: the world data structure and the renderer architecture.&lt;/p&gt;
+&lt;p&gt;The world is implemented as an &lt;a href=&#34;https://en.wikipedia.org/wiki/Octree&#34;&gt;&lt;em&gt;octree&lt;/em&gt;&lt;/a&gt;. An octree can be visualized as a giant cube that encloses all the space available for your world. Each node of the octree divides the space inside the cube in 8 sub-cubes. Then again each cube is recursively split in 8 more sub-cubes, until you arrive to the leaf nodes. A leaf node is the smallest representable unit of the world and it is represented as a single block on the screen.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/dreams/images/octree.png&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/dreams/images/octree_huaf7f34f0f4972518af9d595cc732accc_53361_1200x0_resize_q70_linear_3.png&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/dreams/images/octree_huaf7f34f0f4972518af9d595cc732accc_53361_1800x0_resize_q70_linear_3.png&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/dreams/images/octree_huaf7f34f0f4972518af9d595cc732accc_53361_600x0_resize_q70_linear_3.png&#34; alt=&#34;Octree representation, source: mshgrid.com&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;Octree representation, source: mshgrid.com&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;An octree is ideal for a &amp;ldquo;Minecraft like&amp;rdquo; world for two reasons.&lt;/p&gt;
+&lt;p&gt;First, it naturally fits a world made of cubes beacause of its direct mapping of leaf nodes to world blocks.&lt;/p&gt;
+&lt;p&gt;Second, it is very memory efficient when there are big empty spaces because the leaf nodes are not required to exist at all in memory. That is in contrast to a simple three-dimensional array which would still need to allocate the memeory but mark all the empty elements as &amp;ldquo;null&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;The renderer is built using OpenGL3 and therefore it uses the modern rendering pipeline using shaders. The render is also multithreaded by using multiple worker threads that build meshes in real time every time a world chunk is modified.&lt;/p&gt;
+&lt;p&gt;Another thing I love is the built in map editor that allowed me to create the world that you can see in the demo.&lt;/p&gt;
+&lt;video controls&gt;
+    &lt;source src=&#34;https://aradaelli.com/blog/dreams/videos/editor.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;/video&gt;
+&lt;h2 id=&#34;downloads&#34;&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;The source code is available on &lt;a href=&#34;https://github.com/skilion/dreams&#34;&gt;GitHub&lt;/a&gt; and it can be readily compiled on Windows and Linux. Pre-compiled binaries are also available.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Jump And Run</title>
+      <link>https://aradaelli.com/blog/jump-and-run/</link>
+      <pubDate>Fri, 02 Sep 2011 00:00:00 +0000</pubDate>
+      <guid>https://aradaelli.com/blog/jump-and-run/</guid>
+      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;Jump And Run&amp;rdquo; is a game I developed towards the end of high school and the first project I am really proud of.&lt;/p&gt;
+&lt;p&gt;I was always attracted by the idea of building my own game but I had never tried it before. I had some basic experience with graphics from reading books and articles online but I only dabbled with some small graphical demos that I made during the long boring ours in our school lab.&lt;/p&gt;
+&lt;p&gt;One day I decided to build proper game that would be fun to play with levels and enemies to kill.&lt;/p&gt;
+&lt;p&gt;The end result suprised me, it turned out that I could turn my ideas into reality just by putting enough effort into it.&lt;/p&gt;
+&lt;p&gt;Here is a gameplay video of the first level:&lt;/p&gt;
+&lt;video controls&gt;
+    &lt;source src=&#34;https://aradaelli.com/blog/jump-and-run/videos/gameplay.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;/video&gt;
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+&lt;p&gt;When I was a kid the first type of video games I played were &lt;a href=&#34;https://en.wikipedia.org/wiki/Side-scrolling_video_game&#34;&gt;2D Side Scrollers&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I still remember the two games which influenced me the most: &lt;a href=&#34;https://en.wikipedia.org/wiki/Super_Mario_Land&#34;&gt;Super Mario Land&lt;/a&gt; and &lt;a href=&#34;https://en.wikipedia.org/wiki/Claw_(video_game)&#34;&gt;Captain Claw&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Super Mario was the first game I ever played. I played it on a &lt;a href=&#34;https://en.wikipedia.org/wiki/Game_Boy&#34;&gt;Game Boy&lt;/a&gt; which my cousins lend to me because my parents were against buying game consoles (&amp;ldquo;You would waste all your time!&amp;rdquo;, so true in hindsight).&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/jump-and-run/images/supermarioland.jpg&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/jump-and-run/images/supermarioland_hu8c455482062cde4619c6a5b20ed97086_60242_1200x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/jump-and-run/images/supermarioland_hu8c455482062cde4619c6a5b20ed97086_60242_1800x0_resize_q70_linear.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/jump-and-run/images/supermarioland_hu8c455482062cde4619c6a5b20ed97086_60242_600x0_resize_q70_linear.jpg&#34; alt=&#34;Super Mario Land gameplay&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;Super Mario Land gameplay&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Later, when the first computer arrived in my home, my first PC game arrived shortly after. Captain Claw was so difficult for me and I never managed to beat the second level until a friend of mine (who had an internet connection! I still had not) discovered that &lt;a href=&#34;https://en.wikipedia.org/wiki/Cheating_in_video_games#Cheat_codes&#34;&gt;cheat codes&lt;/a&gt; were a thing.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+  &lt;a href=&#34;https://aradaelli.com/blog/jump-and-run/images/claw.gif&#34;&gt;
+    &lt;picture&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/jump-and-run/images/claw_hu2bd8d45453ca467d3540f5629329de3f_128639_1200x0_resize_q70_linear_1.gif&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/jump-and-run/images/claw_hu2bd8d45453ca467d3540f5629329de3f_128639_1800x0_resize_q70_linear_1.gif&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/jump-and-run/images/claw_hu2bd8d45453ca467d3540f5629329de3f_128639_600x0_resize_q70_linear_1.gif&#34; alt=&#34;Captain Claw gameplay&#34;/&gt;
+      
+    &lt;/picture&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;
+    &lt;small&gt;&lt;i&gt;Captain Claw gameplay&lt;/i&gt;&lt;/small&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Jump And Run&amp;rdquo; is my tribute to those games and the endless hours I spent on them. I drew the art myself using &lt;a href=&#34;https://www.gimp.org/&#34;&gt;Gimp&lt;/a&gt;, downloaded the music from the &lt;a href=&#34;https://freemusicarchive.org&#34;&gt;Free Music Archive&lt;/a&gt; and sounds from &lt;a href=&#34;https://freesound.org/&#34;&gt;Freesound&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;analysis&#34;&gt;Analysis&lt;/h2&gt;
+&lt;p&gt;Re-reading today the code today I see a lot of &lt;a href=&#34;https://en.wikipedia.org/wiki/Code_smell&#34;&gt;&amp;ldquo;code smells&amp;rdquo;&lt;/a&gt; like huge functions and bad names, however keep in mind that I just finished high school when I wrote it :).&lt;/p&gt;
+&lt;p&gt;The game runs on a custom 2D Game Engine which I wrote in C++.&lt;/p&gt;
+&lt;p&gt;I appreciate how neatly the generic parts of the engine are split in virtual classes that make sense. The framework of the engine with its initialization code is separate from the game logic. I remember being deeply influenced from the code of famous game engines of the time such as &lt;a href=&#34;https://github.com/stephank/surreal/&#34;&gt;Unreal Tournament&lt;/a&gt; and &lt;a href=&#34;https://github.com/id-Software/Quake-III-Arena&#34;&gt;Quake 3 Arena&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To draw on the screen I used &lt;a href=&#34;https://en.wikipedia.org/wiki/OpenGL&#34;&gt;OpenGL&lt;/a&gt; and for playing sounds I used &lt;a href=&#34;https://en.wikipedia.org/wiki/OpenAL&#34;&gt;OpenAL&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I have forgotten how much time I spent rewriting much functionality of the standard library such as string and memory functions, file access, and various data structures. I was motivated by the fact that many game development articles recommended to avoid the standard library as it is not optimized for speed in most cases.&lt;/p&gt;
+&lt;h3 id=&#34;map-editor&#34;&gt;Map Editor&lt;/h3&gt;
+&lt;p&gt;I was very proud of the built-in map editor which allowed me to build maps with my basic drawing skills that would become alive with sound and enemies.&lt;/p&gt;
+&lt;p&gt;The game world is composed of small squares. Each square has a background and foreground texture taken from a &lt;a href=&#34;https://en.wikipedia.org/wiki/Texture_atlas&#34;&gt;sprite sheet&lt;/a&gt;. Furthermore each square has a &amp;ldquo;type&amp;rdquo; property that can make it interact with the player by being solid, lethal, or a coin for example.&lt;/p&gt;
+&lt;video controls&gt;
+    &lt;source src=&#34;https://aradaelli.com/blog/jump-and-run/videos/editor.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;/video&gt;
+&lt;h3 id=&#34;particle-system&#34;&gt;Particle System&lt;/h3&gt;
+&lt;p&gt;Another thing I remember fondly is the &lt;a href=&#34;https://en.wikipedia.org/wiki/Particle_system&#34;&gt;particle system&lt;/a&gt;. It makes killing enemies very satisfying by releasing a swarm of &amp;ldquo;blood&amp;rdquo; particles which collide with the game world.&lt;/p&gt;
+&lt;video controls&gt;
+    &lt;source src=&#34;https://aradaelli.com/blog/jump-and-run/videos/splash.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;/video&gt;
+&lt;h2 id=&#34;downloads&#34;&gt;Downloads&lt;/h2&gt;
+&lt;p&gt;The source code is available on &lt;a href=&#34;https://github.com/skilion/jump-and-run&#34;&gt;GitHub&lt;/a&gt; and it can be readily compiled on Windows and Linux. Pre-compiled binaries are also &lt;a href=&#34;https://github.com/skilion/jump-and-run/releases&#34;&gt;available&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

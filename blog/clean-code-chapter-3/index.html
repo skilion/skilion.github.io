@@ -1,0 +1,111 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><script async src="https://www.googletagmanager.com/gtag/js?id=G-64J3C3W6RC"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-64J3C3W6RC")</script><title>Clean Code, Chapter 3: Functions &ndash; Andrea Radaelli
+</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/syntax.css><link rel=icon href=/favicon.ico type=image/x-icon><link rel=alternate type=application/rss+xml href=/blog/index.xml title="Andrea Radaelli's Blog"></head><body><header><a href=/><img class=header-logo src=/images/logo.svg></a><nav><a href=/portfolio/>Portfolio</a>
+<a href=/blog/>Blog</a>
+<a href=/about/>About</a></nav></header><main><article class=article-container><section class=article-content><h1>Clean Code, Chapter 3: Functions</h1><p class=page-date>18 November 2021</p><p>This post is a summary of chapter 2 of the book &ldquo;Clean Code&rdquo;. Entitled &ldquo;Functions&rdquo;, Chapter 3 introduces a series of principles to be used when writing functions. Functions deserve a full chapter about them because they are the first level of abstraction in any program.</p><h2 id=1-single-responsibility-principle-srp>1. Single-responsibility Principle (SRP)</h2><p>Your function should do one thing and that thing should clearly be stated in its name. At a glance, anybody can understand what it does without looking at the code.</p><p>What does this principle mean in practice? It means that your function should only perform a handful of operations that are one level of abstraction below its name. If the function tries to do more than that, then you should be able to extract more functions by refactoring it.</p><p>There are two signals that tells if a function is doing more than one thing:</p><ul><li>The number of lines of code is more than 20 or 30.</li><li>There are more than 2 or 3 <code>if</code>, <code>for</code>, and <code>while</code> statements (nested or not).</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=k>void</span> <span class=n>synchronizeRemoteItems</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=n>Server</span> <span class=n>remoteServerInstance</span> <span class=p>=</span> <span class=n>getServerInstance</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>	<span class=n>List</span><span class=p>&lt;</span><span class=n>Item</span><span class=p>&gt;</span> <span class=n>items</span> <span class=p>=</span> <span class=n>getAvailableItems</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>	<span class=k>foreach</span> <span class=p>(</span><span class=n>Item</span> <span class=n>item</span> <span class=k>in</span> <span class=n>items</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=n>Identifier</span> <span class=n>id</span> <span class=p>=</span> <span class=n>item</span><span class=p>.</span><span class=n>getId</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>		<span class=k>if</span> <span class=p>(</span><span class=n>remoteServerInstance</span><span class=p>.</span><span class=n>hasItem</span><span class=p>(</span><span class=n>id</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>			<span class=n>RemoteItem</span> <span class=n>remoteItem</span> <span class=p>=</span> <span class=n>remoteServerInstance</span><span class=p>.</span><span class=n>getItem</span><span class=p>(</span><span class=n>id</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>			<span class=k>if</span> <span class=p>(</span><span class=n>remoteItem</span><span class=p>.</span><span class=n>getHash</span><span class=p>()</span> <span class=p>!=</span> <span class=n>item</span><span class=p>.</span><span class=n>getHash</span><span class=p>())</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>				<span class=n>remoteServerInstance</span><span class=p>.</span><span class=n>upload</span><span class=p>(</span><span class=n>item</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>			<span class=p>}</span>
+</span></span><span class=line><span class=cl>		<span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>			<span class=n>remoteServerInstance</span><span class=p>.</span><span class=n>upload</span><span class=p>(</span><span class=n>item</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>		<span class=p>}</span>
+</span></span><span class=line><span class=cl>	<span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// Becomes:</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>void</span> <span class=n>synchronizeRemoteItems</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=n>Server</span> <span class=n>remoteServerInstance</span> <span class=p>=</span> <span class=n>getServerInstance</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>	<span class=n>List</span><span class=p>&lt;</span><span class=n>Item</span><span class=p>&gt;</span> <span class=n>items</span> <span class=p>=</span> <span class=n>getAvailableItems</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>	<span class=k>foreach</span> <span class=p>(</span><span class=n>Item</span> <span class=n>item</span> <span class=k>in</span> <span class=n>items</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=n>ensureItemIsSynced</span><span class=p>(</span><span class=n>item</span><span class=p>,</span> <span class=n>remoteServerInstance</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>	<span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>private</span> <span class=k>void</span> <span class=n>ensureItemIsSynced</span><span class=p>(</span><span class=n>Item</span> <span class=n>item</span><span class=p>,</span> <span class=n>Server</span> <span class=n>remoteServerInstance</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=n>Identifier</span> <span class=n>id</span> <span class=p>=</span> <span class=n>item</span><span class=p>.</span><span class=n>getId</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>	<span class=k>if</span> <span class=p>(</span><span class=n>remoteServerInstance</span><span class=p>.</span><span class=n>hasItem</span><span class=p>(</span><span class=n>id</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=n>RemoteItem</span> <span class=n>remoteItem</span> <span class=p>=</span> <span class=n>remoteServerInstance</span><span class=p>.</span><span class=n>getItem</span><span class=p>(</span><span class=n>id</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>		<span class=k>if</span> <span class=p>(</span><span class=n>remoteItem</span><span class=p>.</span><span class=n>getHash</span><span class=p>()</span> <span class=p>!=</span> <span class=n>item</span><span class=p>.</span><span class=n>getHash</span><span class=p>())</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>			<span class=n>remoteServerInstance</span><span class=p>.</span><span class=n>upload</span><span class=p>(</span><span class=n>item</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>		<span class=p>}</span>
+</span></span><span class=line><span class=cl>	<span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=n>remoteServerInstance</span><span class=p>.</span><span class=n>upload</span><span class=p>(</span><span class=n>item</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>	<span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>Another relevant example is error handling. &ldquo;Try/catch&rdquo; blocks confuse the structure of the code and mix error processing with the business logic. So it is better to extract the bodies of the try and catch blocks out into functions of their own.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=k>void</span> <span class=n>synchronizeRemoteItems</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=k>try</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=n>Server</span> <span class=n>remoteServerInstance</span> <span class=p>=</span> <span class=n>getServerInstance</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>		<span class=n>List</span><span class=p>&lt;</span><span class=n>Item</span><span class=p>&gt;</span> <span class=n>items</span> <span class=p>=</span> <span class=n>getAvailableItems</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>		<span class=k>foreach</span> <span class=p>(</span><span class=n>Item</span> <span class=n>item</span> <span class=k>in</span> <span class=n>items</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>			<span class=n>ensureItemIsSynced</span><span class=p>(</span><span class=n>item</span><span class=p>,</span> <span class=n>remoteServerInstance</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>		<span class=p>}</span>
+</span></span><span class=line><span class=cl>	<span class=p>}</span> <span class=k>catch</span> <span class=p>(</span><span class=n>ConnectionException</span> <span class=n>e</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=n>logException</span><span class=p>(</span><span class=n>e</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>		<span class=k>throw</span> <span class=k>new</span> <span class=n>SyncFailedException</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>	<span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// Becomes:</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>void</span> <span class=n>synchronize</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=k>try</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=n>synchronizeRemoteItems</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>	<span class=p>}</span> <span class=k>catch</span> <span class=p>(</span><span class=n>ConnectionException</span> <span class=n>e</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=n>logException</span><span class=p>(</span><span class=n>e</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>		<span class=k>throw</span> <span class=k>new</span> <span class=n>SyncFailedException</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>	<span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>private</span> <span class=k>void</span> <span class=n>synchronizeRemoteItems</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=n>Server</span> <span class=n>remoteServerInstance</span> <span class=p>=</span> <span class=n>getServerInstance</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>	<span class=n>List</span><span class=p>&lt;</span><span class=n>Item</span><span class=p>&gt;</span> <span class=n>items</span> <span class=p>=</span> <span class=n>getAvailableItems</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>	<span class=k>foreach</span> <span class=p>(</span><span class=n>Item</span> <span class=n>item</span> <span class=k>in</span> <span class=n>items</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=n>ensureItemIsSynced</span><span class=p>(</span><span class=n>item</span><span class=p>,</span> <span class=n>remoteServerInstance</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>	<span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><h2 id=2-use-the-least-number-of-arguments>2. Use the least number of arguments</h2><p>The more arguments the more difficult is to understand what the function does. You should never use more than 3 arguments. If you find yourself in the situation it is likely that some of those arguments should be wrapped in a <code>struct</code> or <code>class</code> because they are part of a concept that deserves a name of its own.</p><p>Also, never use boolean flags. They imply that the function does two things, one when the flag is true and one when it&rsquo;s false. What you really need is two distinct functions.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=k>void</span> <span class=n>drawRectangle</span><span class=p>(</span><span class=kt>int</span> <span class=n>x</span><span class=p>,</span> <span class=kt>int</span> <span class=n>y</span><span class=p>,</span> <span class=kt>int</span> <span class=n>width</span><span class=p>,</span> <span class=kt>int</span> <span class=n>height</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// Becomes:</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Rectangle</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=kd>public</span> <span class=kt>int</span> <span class=n>x</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>	<span class=kd>public</span> <span class=kt>int</span> <span class=n>y</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>	<span class=kd>public</span> <span class=kt>int</span> <span class=n>width</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>	<span class=kd>public</span> <span class=kt>int</span> <span class=n>height</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>void</span> <span class=n>drawRectangle</span><span class=p>(</span><span class=n>Rectangle</span> <span class=n>rect</span><span class=p>);</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=k>void</span> <span class=n>makePizza</span><span class=p>(</span><span class=kt>bool</span> <span class=n>vegan</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// Becomes:</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>void</span> <span class=n>makePizza</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=k>void</span> <span class=n>makeVeganPizza</span><span class=p>();</span>
+</span></span></code></pre></div><h2 id=3-have-no-side-effects>3. Have No Side Effects</h2><p>Side effects are unexpected changes to the state of the program. It may be in the form of <strong>global variables</strong> or unexpected variables of the class of the same method.</p><p>Side effects create temporal coupling. Temporal coupling is an implicit relationship requiring the client to invoke one function after another. Basically it means that a function can only be called at certain times and incurring in the risk of unexpected side effects at others.</p><p>If you must have side effects they should be clearly made explicit in the function name, ex. <code>Initialize()</code>.</p><h2 id=4-avoid-output-arguments>4. Avoid Output Arguments</h2><p>Function that use output arguments are confusing and should be avoided in general. It&rsquo;s not immediate to understand that an argument is an output and you certainly have to look the definition.</p><p>Output arguments were widely used before object oriented (OO) programming, however in an OO language the need for output arguments disappears because when you are a calling a method, the object owning it is the intended output argument (<code>this</code>).</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=k>void</span> <span class=n>addCheese</span><span class=p>(</span><span class=n>Pizza</span> <span class=n>pizza</span><span class=p>,</span> <span class=n>Cheese</span> <span class=n>cheese</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// Becomes:</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>pizza</span><span class=p>.</span><span class=k>add</span><span class=p>(</span><span class=n>cheese</span><span class=p>);</span>
+</span></span></code></pre></div><h2 id=5-commandquery-separation>5. Command/Query Separation</h2><p>A function should either do something or answer a query, but not both. Doing both leads to confusion and it likely indicates that the function is doing two things.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=k>class</span> <span class=nc>Hashmap</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=kd>public</span> <span class=kt>bool</span> <span class=n>setIfKeyExists</span><span class=p>(</span><span class=kt>string</span> <span class=n>key</span><span class=p>,</span> <span class=kt>string</span> <span class=k>value</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// Becomes:</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Hashmap</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=kd>public</span> <span class=kt>bool</span> <span class=n>exists</span><span class=p>(</span><span class=kt>string</span> <span class=n>key</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>	<span class=kd>public</span> <span class=k>void</span> <span class=k>set</span><span class=p>(</span><span class=kt>string</span> <span class=n>key</span><span class=p>,</span> <span class=kt>string</span> <span class=k>value</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>Returning error codes count as breaking this rule. It leads to creating deeply nested <code>if</code> statements because you need to handle the errors immediately. Using exceptions instead enables to keep the business logic and the error processing code separated resulting in simplified code.</p><h2 id=6-dont-repeat-yourself-dry>6. Don&rsquo;t Repeat Yourself (DRY)</h2><p>&ldquo;Avoid code duplication&rdquo; is something you have been told to death if you had a formal education in computer science, and for a good reason. If there is an algorithm that gets duplicated N times, the source code will require to be modified N-times should that algorithm ever change.</p><p>Also the readability of your code base is improved if reduntant code is replaced with a single function.</p></section></article></main><footer><p><a href=mailto:contact@aradaelli.com>Email</a> - <a href=https://www.linkedin.com/in/andrea-radaelli/>LinkedIn</a> - <a href=https://github.com/skilion>GitHub</a></p></footer></body></html>

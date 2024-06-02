@@ -1,0 +1,97 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><script async src="https://www.googletagmanager.com/gtag/js?id=G-64J3C3W6RC"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-64J3C3W6RC")</script><title>Clean Code, Chapter 4: Comments &ndash; Andrea Radaelli
+</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/syntax.css><link rel=icon href=/favicon.ico type=image/x-icon><link rel=alternate type=application/rss+xml href=/blog/index.xml title="Andrea Radaelli's Blog"></head><body><header><a href=/><img class=header-logo src=/images/logo.svg></a><nav><a href=/portfolio/>Portfolio</a>
+<a href=/blog/>Blog</a>
+<a href=/about/>About</a></nav></header><main><article class=article-container><section class=article-content><h1>Clean Code, Chapter 4: Comments</h1><p class=page-date>27 November 2021</p><p>This post is a summary of chapter 4 of the book &ldquo;Clean Code&rdquo;, entitled &ldquo;Comments&rdquo;. Chapter 4 contains a few examples of what to do and not to do when commenting code.</p><h2 id=comments-do-not-make-up-for-bad-code>Comments Do Not Make Up for Bad Code</h2><p>Having to write comments is often a failure of writing <em>expressive</em> code. The code itself should be explaining what it is doing.</p><p>Don&rsquo;t use a comment when you can introduce a function.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=c1>// Check to see if the pizza is cooked</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=p>((</span><span class=n>pizza</span><span class=p>.</span><span class=n>flags</span> <span class=p>&amp;</span> <span class=n>COOKING_FLAG</span><span class=p>)</span> <span class=p>&amp;&amp;</span> <span class=p>(</span><span class=n>pizza</span><span class=p>.</span><span class=n>cookingTime</span> <span class=p>&gt;</span> <span class=m>15</span><span class=p>))</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// ...</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// Becomes:</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span><span class=n>pizza</span><span class=p>.</span><span class=n>isCooked</span><span class=p>())</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// ...</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>Don&rsquo;t use a comment if a variable can be renamed to add more context.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=c1>// time when the user submitted the request</span>
+</span></span><span class=line><span class=cl><span class=n>TimeStamp</span> <span class=n>theTime</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// Becomes:</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>TimeStamp</span> <span class=n>userRequestTime</span><span class=p>;</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=c1>// length in kilometers</span>
+</span></span><span class=line><span class=cl><span class=kt>double</span> <span class=n>routeLenght</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// Becomes:</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>double</span> <span class=n>routeLenghtInKilometers</span><span class=p>;</span>
+</span></span></code></pre></div><h2 id=good-comments>Good Comments</h2><p>There are situations when comments are necessary and useful. Here are some cases.</p><h3 id=informative-comments-and-clarifications>Informative Comments and Clarifications</h3><p>Informative comments give information when the code cannot be more expressive than it already is.</p><p>For example, when dealing with regular expressions it may be useful to add a description.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=c1>// match dates in the format dd.mm.yyyy only between years 1900-2099</span>
+</span></span><span class=line><span class=cl><span class=kt>var</span> <span class=n>dateMatcher</span> <span class=p>=</span> <span class=k>new</span> <span class=n>Regex</span><span class=p>(</span><span class=s>@&#34;(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:19|20)\d{2})&#34;</span><span class=p>);</span>
+</span></span></code></pre></div><h3 id=explanation-of-intent>Explanation of Intent</h3><p>Sometimes a piece of code may may look odd. It could make the reader think: &ldquo;Why was it written this way?&rdquo;.</p><p>When you are writing something unconventional do add a comment to help the future developers understand your intentions.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=k>void</span> <span class=n>updatePage</span><span class=p>(</span><span class=n>Content</span> <span class=n>content</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>body</span><span class=p>.</span><span class=k>set</span><span class=p>(</span><span class=n>content</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>view</span><span class=p>.</span><span class=n>invalidate</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// Invalidate the view twice to avoid rendering errors</span>
+</span></span><span class=line><span class=cl>    <span class=n>view</span><span class=p>.</span><span class=n>invalidate</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=k>switch</span> <span class=p>(</span><span class=n>operationType</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>case</span> <span class=n>OperationType</span><span class=p>.</span><span class=n>READ</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>case</span> <span class=n>OperationType</span><span class=p>.</span><span class=n>UPDATE</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>row</span><span class=p>.</span><span class=n>refresh</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=k>break</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>case</span> <span class=n>OperationType</span><span class=p>.</span><span class=n>DELETE</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>row</span><span class=p>.</span><span class=n>markToDelete</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=k>break</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>case</span> <span class=n>OperationType</span><span class=p>.</span><span class=n>CREATE</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// do nothing</span>
+</span></span><span class=line><span class=cl>        <span class=k>break</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><h3 id=warning-of-consequences>Warning of Consequences</h3><p>Sometimes it is useful to warn about consequences that are not immediately apparent to the readers.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=c1>// Trigger the operating system limit of running threads</span>
+</span></span><span class=line><span class=cl><span class=c1>// It will make the OS unresponsive for a few seconds</span>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=p>=</span> <span class=m>0</span><span class=p>;</span> <span class=n>i</span> <span class=p>&lt;</span> <span class=m>1_000_000</span><span class=p>;</span> <span class=n>i</span><span class=p>++)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>thread</span><span class=p>.</span><span class=n>start</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><h3 id=amplification>Amplification</h3><p>A comment may be used to amplify the importance of some operation that may otherwise be seen as unimportant.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=c1>// Trigger the operating system limit of running threads</span>
+</span></span><span class=line><span class=cl><span class=c1>// It will make the OS unresponsive for a few seconds</span>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=p>=</span> <span class=m>0</span><span class=p>;</span> <span class=n>i</span> <span class=p>&lt;</span> <span class=m>1_000_000</span><span class=p>;</span> <span class=n>i</span><span class=p>++)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>thread</span><span class=p>.</span><span class=n>start</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><h3 id=public-apis>Public APIs</h3><p>When using a third-party library I always look for good documentation. It makes using them much more easier.</p><p>If you are building a public interface that will be released to the world or used by other teams in your company, do add comments on it. It is preferred to use a standard format for this type of comments (such as Javadoc for Java or <code>///</code> comments for C#) that allows you to generate documentation from your code.</p><h3 id=todo-comments>TODO Comments</h3><p>&ldquo;To do&rdquo; comments indicate that future work is needed but the developer just does not have the time to do it right now.</p><p>Nowadays most IDEs have functionality to keep track of them so you can go back and get rid of them.</p><p>They are is useful for example to explain why a function has an incomplete implementation and what should be done in the future.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=k>void</span> <span class=n>sendText</span><span class=p>(</span><span class=kt>string</span> <span class=n>message</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=c1>// TODO: actually send the email</span>
+</span></span><span class=line><span class=cl>	<span class=k>return</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=k>void</span> <span class=n>bakePizza</span><span class=p>(</span><span class=n>Pizza</span> <span class=n>pizza</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=c1>// TODO: should use the new FireOven class</span>
+</span></span><span class=line><span class=cl>	<span class=kt>var</span> <span class=n>oven</span> <span class=p>=</span> <span class=k>new</span> <span class=n>ElectricOven</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=n>oven</span><span class=p>.</span><span class=n>setTemperatureDegrees</span><span class=p>(</span><span class=m>250</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>	<span class=n>oven</span><span class=p>.</span><span class=n>waitUntilTemperatureIsReached</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>	<span class=n>oven</span><span class=p>.</span><span class=n>bake</span><span class=p>(</span><span class=n>pizza</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><h2 id=bad-comments>Bad Comments</h2><h3 id=redundant-and-noise-comments>Redundant and Noise Comments</h3><p>Comment that does not add any useful information to the code is useless and should not be added. Like describing the content of a variable when its name already does a good job.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=kd>public</span> <span class=k>class</span> <span class=nc>Pizza</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// The ID of the pizza</span>
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=kt>int</span> <span class=n>id</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// The list of ingredients</span>
+</span></span><span class=line><span class=cl>    <span class=n>List</span><span class=p>&lt;</span><span class=n>Ingredient</span><span class=p>&gt;</span> <span class=n>ingredients</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// Default constructor</span>
+</span></span><span class=line><span class=cl>    <span class=n>Pizza</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// ...</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span></code></pre></div><h3 id=journal-comments>Journal Comments</h3><p>Sometimes people add a comment to record what they have changed. This comments accumulate to create a journal or log.</p><p>However there is no need for such comments as your version control system does that for you already.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=cm>/*
+</span></span></span><span class=line><span class=cl><span class=cm>  2021-01-25: Add support for HTTPS
+</span></span></span><span class=line><span class=cl><span class=cm>  2021-02-03: Retry download three times before failing
+</span></span></span><span class=line><span class=cl><span class=cm>  2021-02-05: Add getFileSize()
+</span></span></span><span class=line><span class=cl><span class=cm>  2021-03-18: Implement IFileStream
+</span></span></span><span class=line><span class=cl><span class=cm>*/</span>
+</span></span></code></pre></div><h3 id=position-markers>Position Markers</h3><p>Position Markers ends up just adding noise. Its better to let the proper indentation and code formatting to give the visual structure to your code.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=cs>////////////////////////////////////////////////////////////////////////////////</span>
+</span></span><span class=line><span class=cl><span class=c1>// Actor class</span>
+</span></span><span class=line><span class=cl><span class=cs>////////////////////////////////////////////////////////////////////////////////</span>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Actor</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=c1>// ...</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><h3 id=commented-out-code>Commented Out Code</h3><p>There is no need to leave commented code. Control version system are good to keep track of what was there before. If you have committed it you won&rsquo;t lose it.</p><p>If you leave commented code the next developer will ask himself why. Are they important? Are they reminders? Or are they just leftovers no one bothered to clean up?</p></section></article></main><footer><p><a href=mailto:contact@aradaelli.com>Email</a> - <a href=https://www.linkedin.com/in/andrea-radaelli/>LinkedIn</a> - <a href=https://github.com/skilion>GitHub</a></p></footer></body></html>
