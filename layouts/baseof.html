@@ -24,30 +24,25 @@
 </head>
 <body>
   <header>
-      <a href="/">
-        <img class="header-logo" src="/images/logo.svg">
-      </a>
-      <nav>
-        <a href="/portfolio/" class="{{ if eq .Page.RelPermalink "/portfolio/" }}nav-active{{ end }}">Portfolio</a>
-        <a href="/blog/" class="{{ if eq .Page.RelPermalink "/blog/" }}nav-active{{ end }}">Blog</a>
-        <a href="/about/" class="{{ if eq .Page.RelPermalink "/about/" }}nav-active{{ end }}">About</a>
-      </nav>
+    <nav>
+      <a href="/" class="{{ if eq .Page.RelPermalink "/" }}nav-active{{ end }}">Home</a>
+      <a href="/about/" class="{{ if eq .Page.RelPermalink "/blog/" }}nav-active{{ end }}">About</a>
+    </nav>
   </header>
 
   <main>
     {{- block "main" . -}}
       <article class="article-container">
-        <section class="article-content">
+        <div class="article-content">
           <h1>{{ .Title }}</h1>
-            {{- block "content" . -}}
-            {{- end -}}
-        </section>
+          {{- block "content" . -}}
+          {{- end -}}
+        </div>
       </article>
     {{- end -}}
   </main>
 
   <footer>
-    <p><a href="mailto:contact@aradaelli.com">Email</a> - <a href="https://www.linkedin.com/in/andrea-radaelli/">LinkedIn</a> - <a href="https://github.com/skilion">GitHub</a></p>
   </footer>
 </body>
 </html>
