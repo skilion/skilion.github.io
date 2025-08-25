@@ -35,9 +35,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/1.jpg&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/1_hub38430383d26de905c5c0ffe560e5c7c_1328263_1200x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/1_hub38430383d26de905c5c0ffe560e5c7c_1328263_1800x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/1_hub38430383d26de905c5c0ffe560e5c7c_1328263_600x0_resize_q70_linear.jpg&#34; alt=&#34;Assembling the LED Matrix&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/1_hu_827999335bfc4e48.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/1_hu_1f98b95625fdfc2b.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/1_hu_aa4f09103b257da.jpg&#34; alt=&#34;Assembling the LED Matrix&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -108,9 +108,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/final.jpg&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/final_hu1f4fc3dddcfd8f126b9523c19ee76dd9_166887_1200x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/final_hu1f4fc3dddcfd8f126b9523c19ee76dd9_166887_1800x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/final_hu1f4fc3dddcfd8f126b9523c19ee76dd9_166887_600x0_resize_q70_linear.jpg&#34; alt=&#34;Final Result&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/final_hu_e48789ef4dfaf43c.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/final_hu_37d53704c4844a7d.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/music-reactive-led-matrix/images/final_hu_5ce6b7b1d5a36489.jpg&#34; alt=&#34;Final Result&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -149,14 +149,14 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/legs.jpg&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/legs_hu4ef223e68975b5de3cff3e75c602f75c_638154_1200x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/legs_hu4ef223e68975b5de3cff3e75c602f75c_638154_1800x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/legs_hu4ef223e68975b5de3cff3e75c602f75c_638154_600x0_resize_q70_linear.jpg&#34; alt=&#34;Adding &amp;amp;ldquo;legs&amp;amp;rdquo; to the PT4115&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/legs_hu_14a20086173b4b3.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/legs_hu_13b2afe9970f65d8.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/legs_hu_a06d0119c6675e33.jpg&#34; alt=&#34;Adding &amp;ldquo;legs&amp;rdquo; to the PT4115&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
   &lt;figcaption&gt;
-    &lt;small&gt;&lt;i&gt;Adding &amp;amp;ldquo;legs&amp;amp;rdquo; to the PT4115&lt;/i&gt;&lt;/small&gt;
+    &lt;small&gt;&lt;i&gt;Adding &amp;ldquo;legs&amp;rdquo; to the PT4115&lt;/i&gt;&lt;/small&gt;
   &lt;/figcaption&gt;
 &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;The circuit to run the PT4115 is quite simple and a reference design can be found in the official specifications along with the rules to pick the side components.&lt;/p&gt;
@@ -169,9 +169,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/pt4115_circuit.png&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/pt4115_circuit_hubdb44f4494ecd35a6069e02e698ea3f6_27125_1200x0_resize_q70_linear_3.png&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/pt4115_circuit_hubdb44f4494ecd35a6069e02e698ea3f6_27125_1800x0_resize_q70_linear_3.png&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/pt4115_circuit_hubdb44f4494ecd35a6069e02e698ea3f6_27125_600x0_resize_q70_linear_3.png&#34; alt=&#34;PT4115 sample circuit&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/pt4115_circuit_hu_f858ef92ed79c806.png&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/pt4115_circuit_hu_afe51043540ce57b.png&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/pt4115_circuit_hu_fde041e5a46a3cb3.png&#34; alt=&#34;PT4115 sample circuit&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -183,9 +183,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/original-light.jpg&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/original-light_huf5c5de6739591b2ae0a1250c19d47f32_631651_1200x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/original-light_huf5c5de6739591b2ae0a1250c19d47f32_631651_1800x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/original-light_huf5c5de6739591b2ae0a1250c19d47f32_631651_600x0_resize_q70_linear.jpg&#34; alt=&#34;Light Front&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/original-light_hu_b6ed8e0cbb33d198.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/original-light_hu_3cf8eb3e4a3fb9.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/original-light_hu_3c285a66d7940497.jpg&#34; alt=&#34;Light Front&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -197,9 +197,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/back-open.jpg&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/back-open_huf47e3ece652e0a2102b4b8b0f3b434e1_846093_1200x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/back-open_huf47e3ece652e0a2102b4b8b0f3b434e1_846093_1800x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/back-open_huf47e3ece652e0a2102b4b8b0f3b434e1_846093_600x0_resize_q70_linear.jpg&#34; alt=&#34;Original LED Driver&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/back-open_hu_ff4c7e49304cf2b9.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/back-open_hu_8b76a2bc034164fa.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/back-open_hu_388046c13c128ad5.jpg&#34; alt=&#34;Original LED Driver&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -211,9 +211,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-1.jpg&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-1_hu8de0043513af99663a01e8eca35b58c8_970054_1200x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-1_hu8de0043513af99663a01e8eca35b58c8_970054_1800x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-1_hu8de0043513af99663a01e8eca35b58c8_970054_600x0_resize_q70_linear.jpg&#34; alt=&#34;Frame unmounted&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-1_hu_57858cf81e8f22e2.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-1_hu_34a5fd41a21710ed.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-1_hu_11669d0c6a64ac3c.jpg&#34; alt=&#34;Frame unmounted&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -224,9 +224,9 @@
 &lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-2.jpg&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-2_hu2c2258d7a09d5fc42ba0bdbd0952b8cc_765492_1200x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-2_hu2c2258d7a09d5fc42ba0bdbd0952b8cc_765492_1800x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-2_hu2c2258d7a09d5fc42ba0bdbd0952b8cc_765492_600x0_resize_q70_linear.jpg&#34; alt=&#34;Original LED&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-2_hu_ed9303da9fc2864a.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-2_hu_9bef7ab0a5c5b32d.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/front-open-2_hu_b72c6ff32bca540.jpg&#34; alt=&#34;Original LED&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -238,9 +238,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/led-driver.jpg&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/led-driver_hub35f6fe963cd384efe53fee927fddda3_997912_1200x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/led-driver_hub35f6fe963cd384efe53fee927fddda3_997912_1800x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/led-driver_hub35f6fe963cd384efe53fee927fddda3_997912_600x0_resize_q70_linear.jpg&#34; alt=&#34;RGB LED Driver&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/led-driver_hu_98cd29ab18697a3b.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/led-driver_hu_67c3f3da86b00ef2.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/led-driver_hu_d56a492bfad4ea12.jpg&#34; alt=&#34;RGB LED Driver&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -252,9 +252,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/esp32.jpg&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/esp32_hube53de9591ba4d8fbe78a2866235fcf7_762070_1200x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/esp32_hube53de9591ba4d8fbe78a2866235fcf7_762070_1800x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/esp32_hube53de9591ba4d8fbe78a2866235fcf7_762070_600x0_resize_q70_linear.jpg&#34; alt=&#34;ESP32 WROOM&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/esp32_hu_8f7a2b59acc7fd3f.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/esp32_hu_40776aad2895d012.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/esp32_hu_918d7dc9037e9fd8.jpg&#34; alt=&#34;ESP32 WROOM&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -270,9 +270,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/fitted.jpg&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/fitted_hua3749bb28d640440d92fc0a9fffe6f0a_728022_1200x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/fitted_hua3749bb28d640440d92fc0a9fffe6f0a_728022_1800x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/fitted_hua3749bb28d640440d92fc0a9fffe6f0a_728022_600x0_resize_q70_linear.jpg&#34; alt=&#34;Fitting everything in the light case&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/fitted_hu_48949428782ba008.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/fitted_hu_9703b59fd96ad04b.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/bluetooth-rgb-light/images/fitted_hu_dc97eea296022b5d.jpg&#34; alt=&#34;Fitting everything in the light case&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -311,9 +311,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/mapmymountains/images/1.jpg&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/1_hub3b4b797b60b52949b0c4316d4121bf6_541946_1200x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/1_hub3b4b797b60b52949b0c4316d4121bf6_541946_1800x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/mapmymountains/images/1_hub3b4b797b60b52949b0c4316d4121bf6_541946_600x0_resize_q70_linear.jpg&#34; alt=&#34;Annotation View - 3D globe&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/1_hu_1d8587b600461718.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/1_hu_b66009590bca7a07.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/mapmymountains/images/1_hu_3db179cbb5f125d2.jpg&#34; alt=&#34;Annotation View - 3D globe&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -341,9 +341,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/mapmymountains/images/2.jpg&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/2_hua215daeeb69f38cb91ca12e69a8702e0_974195_1200x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/2_hua215daeeb69f38cb91ca12e69a8702e0_974195_1800x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/mapmymountains/images/2_hua215daeeb69f38cb91ca12e69a8702e0_974195_600x0_resize_q70_linear.jpg&#34; alt=&#34;Annotation View - 2D map&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/2_hu_9e6386ed9858e59f.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/2_hu_e705e7c1a85d6f8c.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/mapmymountains/images/2_hu_2b7183d1a65ea1b.jpg&#34; alt=&#34;Annotation View - 2D map&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -364,9 +364,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/mapmymountains/images/3.png&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/3_hu7570831f7e16eb2dcb2b0c312a7de09a_35460_1200x0_resize_q70_linear_3.png&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/3_hu7570831f7e16eb2dcb2b0c312a7de09a_35460_1800x0_resize_q70_linear_3.png&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/mapmymountains/images/3_hu7570831f7e16eb2dcb2b0c312a7de09a_35460_600x0_resize_q70_linear_3.png&#34; alt=&#34;View to toggle permissions per user&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/3_hu_dcb868ba577bfa24.png&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/3_hu_7ee18e3c00638073.png&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/mapmymountains/images/3_hu_13730976a6a14e84.png&#34; alt=&#34;View to toggle permissions per user&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -383,9 +383,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/mapmymountains/images/4.png&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/4_hu094435ffaa236d8e1cecc6370c401f55_303296_1200x0_resize_q70_linear_3.png&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/4_hu094435ffaa236d8e1cecc6370c401f55_303296_1800x0_resize_q70_linear_3.png&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/mapmymountains/images/4_hu094435ffaa236d8e1cecc6370c401f55_303296_600x0_resize_q70_linear_3.png&#34; alt=&#34;View to create new crowdsourcing campaigns&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/4_hu_1b23dc33dccd1132.png&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/mapmymountains/images/4_hu_25a9ebb5a2585ed3.png&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/mapmymountains/images/4_hu_79db7fea1fe8ba1d.png&#34; alt=&#34;View to create new crowdsourcing campaigns&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -429,9 +429,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/product-configurator/images/configurator.png&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/configurator_hu787cdf68fd21308a21a21dd9f4d0df5f_265605_1200x0_resize_q70_linear_3.png&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/configurator_hu787cdf68fd21308a21a21dd9f4d0df5f_265605_1800x0_resize_q70_linear_3.png&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/product-configurator/images/configurator_hu787cdf68fd21308a21a21dd9f4d0df5f_265605_600x0_resize_q70_linear_3.png&#34; alt=&#34;Screenshot of the website at the end of the configuration process&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/configurator_hu_9ca6792b2f04de83.png&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/configurator_hu_8f2c6991ae085baa.png&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/product-configurator/images/configurator_hu_26bbc631890e29fe.png&#34; alt=&#34;Screenshot of the website at the end of the configuration process&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -448,9 +448,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/product-configurator/images/inventor.png&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/inventor_hudd491f4519a12da25df6141457d5909d_266301_1200x0_resize_q70_linear_3.png&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/inventor_hudd491f4519a12da25df6141457d5909d_266301_1800x0_resize_q70_linear_3.png&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/product-configurator/images/inventor_hudd491f4519a12da25df6141457d5909d_266301_600x0_resize_q70_linear_3.png&#34; alt=&#34;Screenshot of a machine assembly&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/inventor_hu_a915d7b703b6e32b.png&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/inventor_hu_eca931769376c513.png&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/product-configurator/images/inventor_hu_df8f827ee9471215.png&#34; alt=&#34;Screenshot of a machine assembly&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -482,9 +482,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/product-configurator/images/feature_matrix.png&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/feature_matrix_huc4cfaff797883a9ed97a3c112e2894ab_24785_1200x0_resize_q70_linear_3.png&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/feature_matrix_huc4cfaff797883a9ed97a3c112e2894ab_24785_1800x0_resize_q70_linear_3.png&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/product-configurator/images/feature_matrix_huc4cfaff797883a9ed97a3c112e2894ab_24785_600x0_resize_q70_linear_3.png&#34; alt=&#34;Feature matrix comparing selected configurators&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/feature_matrix_hu_f73a88d65750719.png&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/feature_matrix_hu_980fda8de43c1119.png&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/product-configurator/images/feature_matrix_hu_19e88d9078e054f5.png&#34; alt=&#34;Feature matrix comparing selected configurators&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -500,9 +500,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/product-configurator/images/requirements.png&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/requirements_hu7a0e9dec5cba73ddd0aeb6aa59197ea3_29527_1200x0_resize_q70_linear_3.png&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/requirements_hu7a0e9dec5cba73ddd0aeb6aa59197ea3_29527_1800x0_resize_q70_linear_3.png&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/product-configurator/images/requirements_hu7a0e9dec5cba73ddd0aeb6aa59197ea3_29527_600x0_resize_q70_linear_3.png&#34; alt=&#34;Screenshot of the website during the configuration process&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/requirements_hu_51b94b6bbc12507c.png&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/requirements_hu_93f9f517241548a0.png&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/product-configurator/images/requirements_hu_2a52492f85b0caff.png&#34; alt=&#34;Screenshot of the website during the configuration process&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -514,9 +514,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/product-configurator/images/architecture.png&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/architecture_hu0c6cfbac0553aa9b9145d6f9fb377cb3_38685_1200x0_resize_q70_linear_3.png&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/architecture_hu0c6cfbac0553aa9b9145d6f9fb377cb3_38685_1800x0_resize_q70_linear_3.png&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/product-configurator/images/architecture_hu0c6cfbac0553aa9b9145d6f9fb377cb3_38685_600x0_resize_q70_linear_3.png&#34; alt=&#34;Architecture diagram&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/architecture_hu_de46d50e215aa43b.png&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/product-configurator/images/architecture_hu_a2c2579681ea825c.png&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/product-configurator/images/architecture_hu_227c0dfabde2d8e4.png&#34; alt=&#34;Architecture diagram&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -547,9 +547,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/dreams/images/minecraft.jpg&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/dreams/images/minecraft_hu164eb22f1cd6a1b235b02a054b9f11e1_292557_1200x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/dreams/images/minecraft_hu164eb22f1cd6a1b235b02a054b9f11e1_292557_1800x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/dreams/images/minecraft_hu164eb22f1cd6a1b235b02a054b9f11e1_292557_600x0_resize_q70_linear.jpg&#34; alt=&#34;Minecraft&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/dreams/images/minecraft_hu_98193caba59b47c2.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/dreams/images/minecraft_hu_d0b1de21880dc57d.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/dreams/images/minecraft_hu_bb3b5eeb804d0061.jpg&#34; alt=&#34;Minecraft&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -577,9 +577,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/dreams/images/octree.png&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/dreams/images/octree_huaf7f34f0f4972518af9d595cc732accc_53361_1200x0_resize_q70_linear_3.png&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/dreams/images/octree_huaf7f34f0f4972518af9d595cc732accc_53361_1800x0_resize_q70_linear_3.png&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/dreams/images/octree_huaf7f34f0f4972518af9d595cc732accc_53361_600x0_resize_q70_linear_3.png&#34; alt=&#34;Octree representation, source: mshgrid.com&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/dreams/images/octree_hu_54a19df92c7179b7.png&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/dreams/images/octree_hu_54b2a724faf8ad8d.png&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/dreams/images/octree_hu_cc6887de3dcb7ef6.png&#34; alt=&#34;Octree representation, source: mshgrid.com&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -621,9 +621,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/jump-and-run/images/supermarioland.jpg&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/jump-and-run/images/supermarioland_hu8c455482062cde4619c6a5b20ed97086_60242_1200x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/jump-and-run/images/supermarioland_hu8c455482062cde4619c6a5b20ed97086_60242_1800x0_resize_q70_linear.jpg&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/jump-and-run/images/supermarioland_hu8c455482062cde4619c6a5b20ed97086_60242_600x0_resize_q70_linear.jpg&#34; alt=&#34;Super Mario Land gameplay&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/jump-and-run/images/supermarioland_hu_85c54742f333bd36.jpg&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/jump-and-run/images/supermarioland_hu_8234e65beb6fe9be.jpg&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/jump-and-run/images/supermarioland_hu_bf55dedfd0ad792b.jpg&#34; alt=&#34;Super Mario Land gameplay&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
@@ -635,9 +635,9 @@
 &lt;p&gt;&lt;figure&gt;
   &lt;a href=&#34;https://aradaelli.com/blog/jump-and-run/images/claw.gif&#34;&gt;
     &lt;picture&gt;
-      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/jump-and-run/images/claw_hu2bd8d45453ca467d3540f5629329de3f_128639_1200x0_resize_q70_linear_1.gif&#34;&gt;
-        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/jump-and-run/images/claw_hu2bd8d45453ca467d3540f5629329de3f_128639_1800x0_resize_q70_linear_1.gif&#34;&gt;
-        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/jump-and-run/images/claw_hu2bd8d45453ca467d3540f5629329de3f_128639_600x0_resize_q70_linear_1.gif&#34; alt=&#34;Captain Claw gameplay&#34;/&gt;
+      &lt;source media=&#34;(min-width:600px)&#34; srcset=&#34;https://aradaelli.com/blog/jump-and-run/images/claw_hu_93b544793f8c4aee.gif&#34;&gt;
+        &lt;source media=&#34;(min-width:1200px)&#34; srcset=&#34;https://aradaelli.com/blog/jump-and-run/images/claw_hu_c6a7d8e83069621c.gif&#34;&gt;
+        &lt;img class=&#34;md__image&#34; src=&#34;https://aradaelli.com/blog/jump-and-run/images/claw_hu_e58142a855f1f1d0.gif&#34; alt=&#34;Captain Claw gameplay&#34;/&gt;
       
     &lt;/picture&gt;
   &lt;/a&gt;
