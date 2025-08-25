@@ -1,162 +1,174 @@
 :root {
-  --bg-color: #FFF;
-  --link-color: #0080FF;
-  --text-color: #333;
+    --bg-color: #fff;
+    --link-color: #0080ff;
+    --text-color: #333;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #111;
-    --link-color: #8080FF;
-    --text-color: #EEE;
-  }
+    :root {
+        --bg-color: #222;
+        --link-color: #bb0;
+        --text-color: #ddd;
+    }
 }
 
-html, body {
-  background: var(--bg-color);
-  color: var(--text-color);
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-  margin: 0;
+html,
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: sans-serif;
+    margin: 0;
 }
 
 main {
-  min-height: calc(100vh - 8rem);
+    min-height: calc(100vh - 8rem);
 }
 
 footer {
-  align-items: center;
-  display: flex;
-  height: 2rem;
-  justify-content: center;
-  padding: 0 0 0 1rem;
+    align-items: center;
+    display: flex;
+    height: 2rem;
+    justify-content: center;
+    padding: 0 0 0 1rem;
 }
 
 figure {
-  margin: 1rem 0 1rem 0;
-  text-align: center;
+    margin: 1rem auto 1rem auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
 }
 
 figure img {
-  cursor: zoom-in;
-  width: 100%;
+    cursor: zoom-in;
+    width: 100%;
 }
 
-video, .vimeo {
-  display: block;
-  max-width: 100%;
-  max-height: 30rem;
-  margin: 1rem auto 1rem auto;
+video,
+.vimeo {
+    display: block;
+    max-width: 100%;
+    max-height: 30rem;
+    margin: 1rem auto 1rem auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 a {
-  color: var(--link-color);
-  text-decoration: none;
+    color: var(--link-color);
+    text-decoration: none;
 }
 a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 a:visited {
-  color: var(--link-color);
+    color: var(--link-color);
 }
 
 @media (prefers-color-scheme: dark) {
-  a:hover {
-    color: #b3b3ff;
-    text-decoration: none;
-    text-shadow: 0 0 .1rem #8080FF, 0 0 .2rem #8080FF, 0 0 .4rem #8080FF, 0 0 .8rem #8080FF;
-  }
+    a:hover {
+        color: color-mix(in srgb, var(--link-color), #fff 10%);
+        text-decoration: none;
+        text-shadow:
+            0 0 0.1rem var(--link-color),
+            0 0 0.2rem var(--link-color),
+            0 0 0.4rem var(--link-color),
+            0 0 0.8rem var(--link-color);
+    }
 }
 
 nav {
-  align-items: center;
-  display: flex;
-  height: 2rem;
+    align-items: center;
+    display: flex;
+    height: 2rem;
 }
 nav a {
-  color: var(--text-color);
-  border-bottom: 1px solid transparent;
-  margin: 0 .5rem 0 .5rem;
-  text-decoration: none;
-  text-transform: uppercase;
+    color: var(--text-color);
+    border-bottom: 1px solid transparent;
+    margin: 0 0.5rem 0 0.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.5s linear;
 }
 nav a:hover {
-  border-color: var(--text-color);
-  text-decoration: none;
-  transition: all .5s linear;
+    border-color: var(--text-color);
 }
 nav a:visited {
-  color: var(--text-color);
+    color: var(--text-color);
 }
 .nav-active {
-  border-color: var(--text-color);
-  border-bottom: 1px solid;
+    border-color: var(--text-color);
+    border-bottom: 1px solid;
 }
 nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 nav li {
-  display: inline;
+    display: inline;
 }
 @media (prefers-color-scheme: dark) {
-  nav a:hover {
-    color: var(--text-color);
-    text-shadow: none;
-  }
+    nav a:hover {
+        color: var(--text-color);
+        text-shadow: none;
+    }
 }
 
 header {
-  align-items: center;
-  display: flex;
-  height: 6rem;
-  justify-content: center;
-  margin: auto;
-  max-width: 40rem;
+    align-items: center;
+    display: flex;
+    height: 6rem;
+    justify-content: center;
+    margin: auto;
+    max-width: 40rem;
 }
 .header-logo {
-  margin: 0 1rem 0 1rem;
-  width: 2rem;
+    margin: 0 1rem 0 1rem;
+    width: 2rem;
+    transition: all 0.5s linear;
 }
 .header-logo:hover {
-  transform: scale(1.1);
-  transition: all .25s linear;
+    transform: scale(1.1);
 }
 
 .article-container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-    margin: 0 .5rem 10rem .5rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0.5rem 10rem 0.5rem;
 }
 .article-content {
-  max-width: 40rem;
+    max-width: 40rem;
 }
 
 pre {
-  tab-size: 4;
-  overflow-x: auto;
-  white-space: pre-wrap;
+    tab-size: 4;
+    overflow-x: auto;
+    white-space: pre-wrap;
 }
 
 h1 {
-  font-size: 2em;
+    margin-block: 0.67em;
+    font-size: 2em;
 }
 
 h2 {
-  font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 h3 {
-  font-size: 1.17em;
+    font-size: 1.17em;
 }
 
 .page-date {
-  color: #AAA;
+    color: #aaa;
 }
 
-table, th, td {
-  border: 1px solid var(--text-color);
-  border-collapse: collapse;
-  padding: .25em;
+table,
+th,
+td {
+    border: 1px solid var(--text-color);
+    border-collapse: collapse;
+    padding: 0.25em;
 }

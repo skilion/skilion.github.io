@@ -1,0 +1,8 @@
+{{ define "title" }}
+  {{ .Title }} &ndash; {{ .Site.Title }}
+{{ end }}
+
+{{ define "content" }}
+  {{ .Content }}
+  <img class="invert" src="/sign.svg" />
+{{ end }}
