@@ -3,7 +3,7 @@
   <channel>
     <title>Blogs - Andrea Radaelli</title>
     <link>https://aradaelli.com/blog/</link>
-    <lastBuildDate>Fri, 22 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://aradaelli.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 24 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://aradaelli.com/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Sports Stats</title>
       <link>https://aradaelli.com/blog/sports-stats/</link>
@@ -42,7 +42,7 @@
     &lt;small&gt;&lt;i&gt;Screenshot&lt;/i&gt;&lt;/small&gt;
   &lt;/figcaption&gt;
 &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;The live demo (desktop ) is hosted at: &lt;a href=&#34;https://sports-stats-demo.vercel.app&#34;&gt;https://sports-stats-demo.vercel.app&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The live demo (desktop only) is hosted at: &lt;a href=&#34;https://sports-stats-demo.vercel.app&#34;&gt;https://sports-stats-demo.vercel.app&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Source code: &lt;a href=&#34;https://github.com/skilion/sports-stats&#34;&gt;https://github.com/skilion/sports-stats&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
