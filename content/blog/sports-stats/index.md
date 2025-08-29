@@ -41,6 +41,6 @@ As I submitted the homework project and prepared for the interview, I reflected 
 
 ![Screenshot](images/screenshot.jpg)
 
-The live demo (desktop ) is hosted at: https://sports-stats-demo.vercel.app
+The live demo (desktop only) is hosted at: https://sports-stats-demo.vercel.app
 
 Source code: https://github.com/skilion/sports-stats
