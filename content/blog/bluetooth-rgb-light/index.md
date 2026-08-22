@@ -14,6 +14,7 @@ I was scouting Amazon and eBay for a controllable light to bring to parties, but
 So I thought I should come up with my own solution.
 
 I started by coming up with a list of requirements:
+
 - Portable and battery powered
 - Multicolor
 - Powerful enough to light up a dark room
@@ -35,6 +36,7 @@ Only when the chips arrived I realized that I had ordered them in the [Surface-m
 The circuit to run the PT4115 is quite simple and a reference design can be found in the official specifications along with the rules to pick the side components.
 
 For Reference:
+
 - **DIM** is the PWM control pin
 - **CSN** is the control sensing pin which helps the chip detect the amount of current going in the LED
 - **SW** is the switch pin which is turned on and off automatically to keep the right amount of current flowing through the LED.
@@ -64,7 +66,9 @@ I had to do the same trick of adding "legs" to the ESP32 module as well in order
 
 Then it was time to connect everything together and test the result. In the next video you can see that the the LED turns on only for a brief moment. That's because as soon as the ESP32 finishes booting its pins enter a low state, effectively turning off the LED drivers and the LED itself.
 
-{{< video "videos/first-test.mp4" >}}
+<video controls>
+  <source src="videos/first-test.mp4" type="video/mp4">
+</video>
 
 Having verified that the circuit works I proceeded fitting everything nicely in the light case. I used the black tape to set in place some transparent plastic in order to isolate the circuit from the metal case and avoid shorts. The dangling cables that you can see taped at the top of the next photo are used to flash the firmware on the microcontroller.
 
@@ -78,6 +82,8 @@ The last remaining task was to build an Android App to connect to the ESP32 and 
 
 And here you can see the final result.
 
-{{< video "videos/end-result.mp4" >}}
+<video controls>
+  <source src="videos/end-result.mp4" type="video/mp4">
+</video>
 
 Overall it has been a fun project that allowed me to play with electronics and learn a lot. The prototype hits all my requirements but the brightness is much less than I expected. I think a proper flood light should be at least 50W to make a good impression. I'll come back at this project and see if I can upsize the LED while still keeping everything battery powered.
