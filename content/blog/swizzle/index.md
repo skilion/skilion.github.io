@@ -13,7 +13,9 @@ In 2013, all my friends were playing [Ruzzle](https://en.wikipedia.org/wiki/Ruzz
 
 I was fascinated by how addicting the game was, given its simplicity, and I started thinkering how I could replicate it.
 
-{{< video "videos/gameplay.mp4" >}}
+<video controls>
+  <source src="videos/gameplay.mp4" type="video/mp4">
+</video>
 
 ## Analysis
 
