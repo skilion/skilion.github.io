@@ -21,7 +21,9 @@ The end result suprised me, it turned out that I could turn my ideas into realit
 
 Here is a gameplay video of the first level:
 
-{{< video "videos/gameplay.mp4" >}}
+<video controls>
+  <source src="videos/gameplay.mp4" type="video/mp4">
+</video>
 
 ## Background
 
@@ -57,13 +59,17 @@ I was very proud of the built-in map editor which allowed me to build maps with 
 
 The game world is composed of small squares. Each square has a background and foreground texture taken from a [sprite sheet](https://en.wikipedia.org/wiki/Texture_atlas). Furthermore each square has a "type" property that can make it interact with the player by being solid, lethal, or a coin for example.
 
-{{< video "videos/editor.mp4" >}}
+<video controls>
+  <source src="videos/editor.mp4" type="video/mp4">
+</video>
 
 ### Particle System
 
 Another thing I remember fondly is the [particle system](https://en.wikipedia.org/wiki/Particle_system). It makes killing enemies very satisfying by releasing a swarm of "blood" particles which collide with the game world.
 
-{{< video "videos/splash.mp4" >}}
+<video controls>
+  <source src="videos/splash.mp4" type="video/mp4">
+</video>
 
 ## Downloads
 

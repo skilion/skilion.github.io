@@ -18,7 +18,9 @@ I started planning and building it one month before. However the project was too
 
 I am very proud of the final result, I managed to implement the main effect I saw in Cyberdog and make it work just in time for new year. It was far from perfect but enough to create the right atmosphere:
 
-{{< video "videos/final.mp4" >}}
+<video controls>
+  <source src="videos/final.mp4" type="video/mp4">
+</video>
 
 ## The Original Plan
 
@@ -65,7 +67,9 @@ The WS2812B LED strips are driven by `5V` data signals. The ESP32 uses `3.3V`, s
 
 This is because `3.3V` "high" signals are high enough to be recognized as "high" from `5V` components, *most of the time*. Glitches and flickers start appearing when refreshing the LED strips at high frequency:
 
-{{< video "videos/flicker.mp4" >}}
+<video controls>
+  <source src="videos/flicker.mp4" type="video/mp4">
+</video>
 
 However, I disregarded this problem as either some weak soldering or wrong voltage levels on my buck converters and went onward finishing building the LED matrix. Only at the very end, when I took the time to properly debug the issue I found the actual cause of the flickering.
 
@@ -128,7 +132,9 @@ Lessons learned:
 
 Here is a video that shows the internal cabling of the LED matrix. Before hanging it on the wall I simply folded the rest of the vinyl film to cover the circuit.
 
-{{< video "videos/wip.mp4" >}}
+<video controls>
+  <source src="videos/wip.mp4" type="video/mp4">
+</video>
 
 ![Final Result](images/final.jpg)
 

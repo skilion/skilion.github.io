@@ -23,7 +23,7 @@ When I got a prototype working, I was puzzled on what to make out of it.
 
 I didn't want to embark in making a full video game, so I decided to build a self-contained experience, a [demo](https://en.wikipedia.org/wiki/Demoscene); or in simpler terms, an "interactive video".
 
-{{< vimeo 223964278 25900eaca6 >}}
+<iframe src="https://player.vimeo.com/video/223964278" width="640" height="360" frameborder="0" allow="fullscreen" allowfullscreen></iframe>
 
 ## Analysis
 
@@ -45,7 +45,9 @@ The renderer is built using OpenGL3 and therefore it uses the modern rendering p
 
 Another thing I love is the built in map editor that allowed me to create the world that you can see in the demo.
 
-{{< video "videos/editor.mp4" >}}
+<video controls>
+  <source src="videos/editor.mp4" type="video/mp4">
+</video>
 
 ## Downloads
 

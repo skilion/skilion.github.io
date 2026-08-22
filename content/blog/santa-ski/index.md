@@ -11,7 +11,9 @@ This game was made in 48h, for a local [game jam](https://en.wikipedia.org/wiki/
 
 This game is a remake of a Microsoft classic: [SkiFree](https://en.wikipedia.org/wiki/SkiFree). The protagonist is supposed to be Santa Claus, in case you were wondering.
 
-{{< video "videos/gameplay.mp4" >}}
+<video controls>
+  <source src="videos/gameplay.mp4" type="video/mp4">
+</video>
 
 I consider game jams great experiences for learning how to be pragmatical developers.
 
