@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-64J3C3W6RC"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-64J3C3W6RC");
+    </script>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <title>{{title}}</title>
+    <style>
+      /* Terminal style */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font:
+          1em/1.1 "Hack",
+          "JetBrains Mono",
+          "Consolas",
+          "SF Mono",
+          "Menlo",
+          "Ubuntu Mono",
+          "DejaVu Sans Mono",
+          monospace;
+        font-kerning: none;
+        font-variant-ligatures: none;
+        font-optical-sizing: none;
+        letter-spacing: 0;
+      }
+
+      :root {
+        color-scheme: light;
+        --primary: #3b7dd8;
+        --secondary: #7b5bb6;
+        --accent: #d68c27;
+        --error: #d1383d;
+        --warning: #d68c27;
+        --success: #3d9a57;
+        --info: #318795;
+        --text: #1a1a1a;
+        --text_muted: #8a8a8a;
+        --background: #ffffff;
+        --background_panel: #fafafa;
+        --background_element: #f5f5f5;
+        --border: #b8b8b8;
+        --border_active: #a0a0a0;
+        --border_subtle: #d4d4d4;
+        --markdown_text: #1a1a1a;
+        --markdown_heading: #d68c27;
+        --markdown_link: #3b7dd8;
+        --markdown_link_text: #318795;
+        --markdown_code: #3d9a57;
+        --markdown_block_quote: #b0851f;
+        --markdown_emph: #b0851f;
+        --markdown_strong: #d68c27;
+        --markdown_horizontal_rule: #8a8a8a;
+        --markdown_list_item: #3b7dd8;
+        --markdown_list_enumeration: #318795;
+        --markdown_image: #3b7dd8;
+        --markdown_image_text: #318795;
+        --markdown_code_block: #1a1a1a;
+        --syntax_comment: #8a8a8a;
+        --syntax_keyword: #d68c27;
+        --syntax_function: #3b7dd8;
+        --syntax_variable: #d1383d;
+        --syntax_string: #3d9a57;
+        --syntax_number: #d68c27;
+        --syntax_type: #b0851f;
+        --syntax_operator: #318795;
+        --syntax_punctuation: #1a1a1a;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          color-scheme: dark;
+          --primary: #fab283;
+          --secondary: #5c9cf5;
+          --accent: #9d7cd8;
+          --error: #e06c75;
+          --warning: #f5a742;
+          --success: #7fd88f;
+          --info: #56b6c2;
+          --text: #eeeeee;
+          --text_muted: #808080;
+          --background: #0a0a0a;
+          --background_panel: #141414;
+          --background_element: #1e1e1e;
+          --border: #484848;
+          --border_active: #606060;
+          --border_subtle: #3c3c3c;
+          --markdown_text: #eeeeee;
+          --markdown_heading: #9d7cd8;
+          --markdown_link: #fab283;
+          --markdown_link_text: #56b6c2;
+          --markdown_code: #7fd88f;
+          --markdown_block_quote: #e5c07b;
+          --markdown_emph: #e5c07b;
+          --markdown_strong: #f5a742;
+          --markdown_horizontal_rule: #808080;
+          --markdown_list_item: #fab283;
+          --markdown_list_enumeration: #56b6c2;
+          --markdown_image: #fab283;
+          --markdown_image_text: #56b6c2;
+          --markdown_code_block: #eeeeee;
+          --syntax_comment: #808080;
+          --syntax_keyword: #9d7cd8;
+          --syntax_function: #fab283;
+          --syntax_variable: #e06c75;
+          --syntax_string: #7fd88f;
+          --syntax_number: #f5a742;
+          --syntax_type: #e5c07b;
+          --syntax_operator: #56b6c2;
+          --syntax_punctuation: #eeeeee;
+        }
+      }
+
+      html {
+        background: var(--background);
+        color: var(--text);
+      }
+
+      body {
+        width: 80ch;
+        max-width: 100%;
+        margin-inline: auto;
+        padding: 1lh 1ch;
+      }
+
+      header pre {
+        width: max-content;
+        max-width: 100%;
+        margin-inline: auto;
+      }
+
+      p {
+        margin: 1lh 0;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: 1lh 0;
+        font-weight: bold;
+      }
+
+      h1 {
+        text-decoration: underline;
+      }
+
+      a {
+        text-decoration: underline;
+      }
+
+      pre:not(.highlight) {
+        letter-spacing: -0.5px;
+      }
+
+      div {
+        min-width: max-content;
+      }
+
+      div:not(.highlight) {
+        margin: 0.5lh 0.5ch;
+        padding: 0.5lh 1.5ch;
+        border: 0.1em solid var(--border);
+        border-radius: 0.4em;
+      }
+
+      ul {
+        padding-left: 2ch;
+      }
+      li {
+        padding-left: 1ch;
+      }
+      li::marker {
+        content: "-";
+        position: absolute;
+      }
+      ol {
+        padding-left: 3ch;
+        counter-reset: item;
+      }
+      ol li {
+        counter-increment: item;
+      }
+      ol li::marker {
+        content: counter(item) ".";
+      }
+
+      hr {
+        margin: 0.5lh 0;
+        border-top: 0.1em solid;
+      }
+
+      blockquote {
+        margin: 1lh 0 1lh 0.5ch;
+        padding-left: 1.5ch;
+        border-inline-start: 0.1em solid;
+      }
+
+      blockquote p {
+          margin: 0;
+      }
+
+      blockquote p + p {
+        margin-top: 1lh;
+      }
+
+      img,
+      video {
+        display: block;
+        margin: 1lh 0;
+        max-width: 100%;
+        height: auto;
+        border: 0.1em solid;
+      }
+
+      /* Markdown elements colors */
+
+      body {
+        color: var(--markdown_text);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: var(--markdown_heading);
+        text-decoration-color: var(--markdown_heading);
+      }
+
+      a {
+        color: var(--markdown_link_text);
+        text-decoration-color: var(--markdown_link_text);
+      }
+
+      a:hover,
+      a:focus-visible {
+        color: var(--markdown_link_text);
+      }
+
+      code {
+        color: var(--markdown_code);
+      }
+
+      li code,
+      blockquote code,
+      table code {
+        padding: 0.05em 0.35ch;
+        background: var(--background_element);
+        border: 1px solid var(--border_subtle);
+        border-radius: 3px;
+      }
+
+      blockquote {
+        color: var(--markdown_block_quote);
+        border-color: var(--markdown_block_quote);
+      }
+
+      em,
+      i {
+        color: var(--markdown_emph);
+      }
+
+      strong,
+      b {
+        color: var(--markdown_strong);
+      }
+
+      a :is(em, i, strong, b) {
+        color: inherit;
+      }
+
+      li::marker {
+        color: var(--markdown_list_item);
+      }
+
+      ol li::marker {
+        color: var(--markdown_list_enumeration);
+      }
+
+      img,
+      video {
+        border-color: var(--markdown_image);
+      }
+
+      table {
+        width: 100%;
+        margin: 0.75lh 0;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 0.35lh 1ch;
+        text-align: left;
+        border: 1px solid var(--border);
+      }
+
+      th {
+        color: var(--markdown_heading);
+        background: var(--background_element);
+      }
+
+      hr {
+        border-color: var(--markdown_horizontal_rule);
+      }
+
+      /* Pygments syntax highlighting */
+
+      div.highlight {
+        margin: 1lh 0;
+        background: var(--background_panel);
+      }
+
+      .highlight {
+        color: var(--markdown_code_block);
+      }
+
+      .highlight .c,
+      .highlight .ch,
+      .highlight .cm,
+      .highlight .cp,
+      .highlight .cpf,
+      .highlight .c1,
+      .highlight .cs {
+        color: var(--syntax_comment);
+      }
+
+      .highlight .k,
+      .highlight .kc,
+      .highlight .kd,
+      .highlight .kn,
+      .highlight .kp,
+      .highlight .kr,
+      .highlight .kt {
+        color: var(--syntax_keyword);
+      }
+
+      .highlight .nf,
+      .highlight .fm {
+        color: var(--syntax_function);
+      }
+
+      .highlight .n,
+      .highlight .na,
+      .highlight .nb,
+      .highlight .nc,
+      .highlight .nd,
+      .highlight .ne,
+      .highlight .ni,
+      .highlight .nl,
+      .highlight .nn,
+      .highlight .no,
+      .highlight .nt,
+      .highlight .nv {
+        color: var(--syntax_variable);
+      }
+
+      .highlight .s,
+      .highlight .sa,
+      .highlight .sb,
+      .highlight .sc,
+      .highlight .dl,
+      .highlight .sd,
+      .highlight .s2,
+      .highlight .se,
+      .highlight .sh,
+      .highlight .si,
+      .highlight .sx,
+      .highlight .sr,
+      .highlight .s1,
+      .highlight .ss {
+        color: var(--syntax_string);
+      }
+
+      .highlight .m,
+      .highlight .mb,
+      .highlight .mf,
+      .highlight .mh,
+      .highlight .mi,
+      .highlight .mo {
+        color: var(--syntax_number);
+      }
+
+      .highlight .o,
+      .highlight .ow {
+        color: var(--syntax_operator);
+      }
+
+      .highlight .p {
+        color: var(--syntax_punctuation);
+      }
+
+      .highlight .err {
+        color: var(--error);
+      }
+
+      /* Animation */
+
+      main {
+        clip-path: inset(0 0 100% 0);
+        animation: main-scanline 1200ms linear forwards;
+      }
+
+      @keyframes main-scanline {
+        from {
+          clip-path: inset(0 0 100% 0);
+        }
+        to {
+          clip-path: inset(0);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        main {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <pre>
+██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗
+██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝
+██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗
+██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝
+╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗
+ ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝
+</pre>
+    </header>
+
+    <hr />
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about.html">About</a>
+    </nav>
+    <hr />
+
+    <h1>{{title}}</h1>
+
+    {{date}}
+
+    <main>{{content}}</main>
+  </body>
+</html>
