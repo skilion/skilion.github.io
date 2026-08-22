@@ -92,6 +92,13 @@ def format_article_date(metadata: dict) -> str:
     return date_text
 
 
+def markdown_output_path(relative_path: Path) -> Path:
+    """Return the public HTML path for a Markdown file."""
+    if relative_path.stem == "index":
+        return relative_path.with_suffix(".html")
+    return relative_path.parent / relative_path.stem / "index.html"
+
+
 def generate_markdown_page(
     source_path: Path, destination_path: Path, template: str
 ) -> None:
@@ -145,7 +152,9 @@ def collect_blog_articles() -> list[BlogArticle]:
             continue
 
         article_date = parse_article_date(metadata.get("date"), source_path)
-        relative_path = source_path.relative_to(CONTENT_DIR).with_suffix(".html")
+        relative_path = markdown_output_path(
+            source_path.relative_to(CONTENT_DIR)
+        )
 
         articles.append(
             BlogArticle(
@@ -209,7 +218,7 @@ def main() -> None:
         if source_path.suffix.lower() in MARKDOWN_SUFFIXES:
             generate_markdown_page(
                 source_path,
-                destination_path.with_suffix(".html"),
+                OUTPUT_DIR / markdown_output_path(relative_path),
                 template,
             )
         else:
