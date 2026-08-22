@@ -152,9 +152,7 @@ def collect_blog_articles() -> list[BlogArticle]:
             continue
 
         article_date = parse_article_date(metadata.get("date"), source_path)
-        relative_path = markdown_output_path(
-            source_path.relative_to(CONTENT_DIR)
-        )
+        relative_path = markdown_output_path(source_path.relative_to(BLOG_DIR))
 
         articles.append(
             BlogArticle(
@@ -193,7 +191,9 @@ def render_blog_index(articles: list[BlogArticle]) -> str:
 def write_blog_index(template: str) -> None:
     content = render_blog_index(collect_blog_articles())
     page = render_template(template, "Blog", content)
-    (OUTPUT_DIR / "index.html").write_text(page, encoding="utf-8")
+    blog_output_dir = OUTPUT_DIR / "blog"
+    blog_output_dir.mkdir(parents=True, exist_ok=True)
+    (blog_output_dir / "index.html").write_text(page, encoding="utf-8")
 
 
 def main() -> None:
