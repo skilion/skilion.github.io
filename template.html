@@ -15,6 +15,7 @@
       gtag("js", new Date());
       gtag("config", "G-64J3C3W6RC");
     </script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css">
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <title>{{title}}</title>
     <style>
@@ -137,10 +138,14 @@
         padding: 1lh 1ch;
       }
 
+      header {
+        overflow: hidden;
+      }
+
       header pre {
         width: max-content;
-        max-width: 100%;
         margin-inline: auto;
+        font-size: clamp(0.5em, 2vw, 1em);
       }
 
       p {
